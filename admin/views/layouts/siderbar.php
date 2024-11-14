@@ -61,15 +61,16 @@
                     <div class="collapse menu-dropdown" id="sidebarDanhMuc">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="" class="nav-link" data-key="t-sweet-alerts">
+                                <a href="?act=danh-mucs" class="nav-link" data-key="t-sweet-alerts">
                                     Danh sách
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link" data-key="t-nestable-list">
+                                <a href="?act=form-add-danh-muc" class="nav-link" data-key="t-nestable-list">
                                     Thêm mới
                                 </a>
                             </li>
+                           
                         </ul>
                     </div>
                 </li>

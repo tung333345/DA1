@@ -15,7 +15,7 @@
 
     <!-- CSS -->
     <?php
-    require_once "layouts/libs_css.php";
+    require_once "views/layouts/libs_css.php";
     ?>
 
 </head>
@@ -27,9 +27,9 @@
 
         <!-- HEADER -->
         <?php
-        require_once "layouts/header.php";
+        require_once "views/layouts/header.php";
 
-        require_once "layouts/siderbar.php";
+        require_once "views/layouts/siderbar.php";
         ?>
 
         <!-- Left Sidebar End -->
@@ -49,12 +49,12 @@
                         <div class="col-12">
                             <div
                                 class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                                <h4 class="mb-sm-0">Cập nhật danh mục</h4>
+                                <h4 class="mb-sm-0">Quản lý danh mục</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                        <li class="breadcrumb-item active">Cập nhật danh mục</li>
+                                        <li class="breadcrumb-item active">Danh sách danh mục sản phẩm</li>
                                     </ol>
                                 </div>
 
@@ -68,24 +68,23 @@
                             <div class="h-100">
                             <div class="card">
                                 <div class="card-header align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">Cập nhật danh mục</h4>
+                                    <h4 class="card-title mb-0 flex-grow-1">Thêm danh mục</h4>
                                     
                                 </div><!-- end card header -->
 
                                 <div class="card-body">
                                    
                                     <div class="live-preview">
-                                        <form action="?act=sua-danh-muc" method="post" enctype="multipart/form-data" >
-                                            <input type="hidden" name="id" value="<?= $danhmuc['id'] ?>" >
+                                        <form action="?act=them-danh-muc" method="post" enctype="multipart/form-data" >
                                             <div class="row">
                                                
                                                 <!--end col-->
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label for="citynameInput" class="form-label">tên danh mục</label>
-                                                        <input type="text" class="form-control" placeholder="Nhập tên danh mục" name="ten_danh_muc" value="<?= $danhmuc['ten'] ?>" >
+                                                        <input type="text" class="form-control" placeholder="Nhập tên danh mục" name="ten_danh_muc">
                                                         <span class="text-danger" >
-                                                        <?= !empty($_SESSION['errors']['ten_danh_muc'])? $_SESSION['errors']['ten_danh_muc'] :'' ?>
+                                                            <?= !empty($_SESSION['errors']['ten_danh_muc'])? $_SESSION['errors']['ten_danh_muc'] :'' ?>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -95,11 +94,11 @@
                                                         <label for="ForminputState" class="form-label">trạng thái</label>
                                                         <select class="form-select" name="trang_thai" >
                                                             <option selected disabled >Chọn trạng thái</option>
-                                                            <option value="1" <?= $danhmuc['trang_thai']==1 ? "selected" : '' ?> >Hiển thị</option>
-                                                            <option value="2" <?= $danhmuc['trang_thai']==2 ? "selected" : '' ?> >Không hiển thị</option>
+                                                            <option value="1" >Hiển thị</option>
+                                                            <option value="2" >Không hiển thị</option>
                                                         </select>
                                                         <span class="text-danger" >
-                                                        <?= !empty($_SESSION['errors']['trang_thai'])? $_SESSION['errors']['trang_thai'] :'' ?>
+                                                            <?= !empty($_SESSION['errors']['trang_thai'])? $_SESSION['errors']['trang_thai'] :'' ?>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -176,7 +175,7 @@
 
     <!-- JAVASCRIPT -->
     <?php
-    require_once "layouts/libs_js.php";
+    require_once "views/layouts/libs_js.php";
     ?>
 
 </body>

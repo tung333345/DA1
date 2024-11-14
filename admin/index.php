@@ -22,8 +22,16 @@ match ($act){
     'danh-mucs'         => (new DanhMucController())->index(),
     'form-add-danh-muc' => (new DanhMucController())->create(),
     'them-danh-muc'     => (new DanhMucController())->store(),
-    'form-sua-danh-muc'     => (new DanhMucController())->edit(),
+    'form-sua-danh-muc' => (new DanhMucController())->edit(),
     'sua-danh-muc'      => (new DanhMucController())->update(),
-    'xoa-danh-muc'      => (new DanhMucController())->destroy()
+    'xoa-danh-muc'      => (new DanhMucController())->destroy(),
+    // quản lý sản phẩm
+    'san-pham'          => (new SanPhamController())->index(),
+    'form-add-san-pham' => (new SanPhamController())->create(),
+    'them-san-pham'     => (new SanPhamController())->store(),
+    'form-sua-san-pham' => (new SanPhamController())->edit(),
+    'sua-san-pham'      => (new SanPhamController())->update(),
+    'xoa-san-pham'      => (new SanPhamController())->destroy()
+
 
 };

@@ -9,10 +9,10 @@ class DanhMucController{
         // lấy ra dữ liệu danh mục
         $danhMucs=$this->modelDanhmuc->getAll();
         // đưa dữ liệu ra view
-        require_once "views/list_danh_muc.php";
+        require_once "views/danhmuc/list_danh_muc.php";
     }
     public function create(){
-        require_once "views/create_danh_muc.php";
+        require_once "views/danhmuc/create_danh_muc.php";
     }
     public function store(){
         if($_SERVER['REQUEST_METHOD'] == "POST"  ){
@@ -49,7 +49,7 @@ class DanhMucController{
         $id = $_GET['danh_muc_id'];
         // lấy thông tin chi tiết của danh mục
         $danhmuc = $this->modelDanhmuc->getDetailData($id);
-        require_once "views/edit_danh_muc.php";
+        require_once "views/danhmuc/edit_danh_muc.php";
 
     }
     public function update(){

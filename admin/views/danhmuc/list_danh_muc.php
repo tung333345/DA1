@@ -15,7 +15,7 @@
 
     <!-- CSS -->
     <?php
-    require_once "layouts/libs_css.php";
+    require_once "views/layouts/libs_css.php";
     ?>
 
 </head>
@@ -27,9 +27,8 @@
 
         <!-- HEADER -->
         <?php
-        require_once "layouts/header.php";
-
-        require_once "layouts/siderbar.php";
+        require_once "views/layouts/header.php";
+        require_once "views/layouts/siderbar.php";
         ?>
 
         <!-- Left Sidebar End -->
@@ -186,7 +185,7 @@
 
     <!-- JAVASCRIPT -->
     <?php
-    require_once "layouts/libs_js.php";
+    require_once "views/layouts/libs_js.php";
     ?>
 
 </body>
