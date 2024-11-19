@@ -48,12 +48,12 @@
                         <div class="col-12">
                             <div
                                 class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                                <h4 class="mb-sm-0">Quản lý danh mục</h4>
+                                <h4 class="mb-sm-0">Quản lý danh sách sản phẩm</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                        <li class="breadcrumb-item active">Danh sách danh mục sản phẩm</li>
+                                        <li class="breadcrumb-item active">Danh sách sản phẩm</li>
                                     </ol>
                                 </div>
 
@@ -67,58 +67,70 @@
                             <div class="h-100">
                                 <div class="card">
                                     <div class="card-header align-items-center d-flex">
-                                        <h4 class="card-title mb-0 flex-grow-1">Danh mục sản phẩm</h4>
-                                        <a href="?act=form-add-danh-muc" class="btn btn-soft-success material-shadow-none"><i class="ri-add-circle-line align-middle me-1"></i>Thêm danh mục</a>
+                                        <h4 class="card-title mb-0 flex-grow-1">Danh sách sản phẩm</h4>
+                                        <a href="?act=form-add-san-pham"
+                                            class="btn btn-soft-success material-shadow-none"><i
+                                                class="ri-add-circle-line align-middle me-1"></i>Thêm sản phẩm</a>
                                     </div><!-- end card header -->
 
                                     <div class="card-body">
 
                                         <div class="live-preview">
                                             <div class="table-responsive">
-                                                <table class="table table-striped table-nowrap align-middle mb-0">
+                                                <table class="table table-striped align-middle mb-0">
                                                     <thead>
                                                         <tr>
                                                             <th scope="col">STT</th>
-                                                            <th scope="col">TÊN DANH MỤC</th>
+                                                            <th scope="col">TÊN SẢN PHẨM</th>
+                                                            <th scope="col">ẢNH SẢN PHẨM</th>
+                                                            <th scope="col">GIÁ TIỀN</th>
+                                                            <th scope="col">SỐ LƯỢNG</th>
+                                                            <th scope="col">DANH MỤC</th>
                                                             <th scope="col">TRẠNG THÁI</th>
-                                                            <th scope="col">Action</th>
+                                                            <th scope="col">MÔ TẢ</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <?php foreach($danhMucs as $index => $danhMucs) :?>
-                                                        <tr>
-                                                            <td class="fw-medium"><?= $index+1 ?></td>
-                                                            <td>
-                                                                <?= $danhMucs['ten_danh_muc'] ?>
-                                                            </td>
-                                                            <?php
-                                                            if($danhMucs['trang_thai']==1){
-                                                                ?>
-                                                                <td><span class="badge bg-success">Hiển thị</span></td>
-                                                            <?php
-                                                            }
-                                                            else{
-                                                            ?>
-                                                                <td><span class="badge bg-danger">Không hiển thị</span></td>
-                                                            
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                           
-                                                            
-                                                            <td>
-                                                                <div>
-                                                                    <form method="post" onsubmit="return confirm('bạn có muốn xóa không ??')" action="?act=xoa-danh-muc">
-                                                                        <input type="hidden" name="danh_muc_id" value='<?=$danhMucs["id_danh_muc"]?>'>
-                                                                        <button type="submit"  class="btn btn-success">xóa</button>
-                                                                        <a href="?act=form-sua-danh-muc&danh_muc_id=<?=$danhMucs["id_danh_muc"]?>" class="btn btn-danger"  >sửa</a>
-                                                                    </form>
+                                                        <?php foreach ($SanPham as $index => $SanPham): ?>
+                                                            <tr>
+                                                                <td class="fw-medium"><?= $index + 1 ?></td>
+                                                                <td><?= $SanPham['ten_san_pham'] ?></td>
+                                                                <td><img src="<?= BASE_URL . $SanPham['hinh_anh'] ?>"
+                                                                        onerror="this.onerror = null ; this.src='https://cdn.nhathuoclongchau.com.vn/unsafe/https://cms-prod.s3-sgn09.fptcloud.com/00003896_ich_tam_khang_9056_62af_large_4a685f1e40.jpg'
+                                                                " alt="ảnh sản phẩm" height="80"></td>
+                                                                <td><?= $SanPham['gia_san_pham'] ?></td>
+                                                                <td><?= $SanPham['so_luong'] ?></td>
+                                                                <td><?= $SanPham['ten_danh_muc'] ?></td>
+                                                                <?php
+                                                                if ($SanPham['trang_thai'] == 1) {
+                                                                    ?>
+                                                                    <td><span class="badge bg-success">Hiển thị</span></td>
+                                                                    <?php
+                                                                } else {
+                                                                    ?>
+                                                                    <td><span class="badge bg-danger">Không hiển thị</span></td>
 
-                                                                
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                       <?php endforeach; ?>
+                                                                    <?php
+                                                                }
+                                                                ?>
+                                                                <td><?= $SanPham['mo_ta'] ?></td>
+
+
+
+                                                                <td>
+                                                                    <div  style="display: flex; gap: 10px;" >
+                                                                        <a href="?act=form-sua-san-pham&san_pham_id=<?= $SanPham["id_san_pham"] ?>"
+                                                                            class='btn btn-danger'>sửa</a>
+                                                                        <a onclick="return confirm('bạn có muốn xóa không ')" href="?act=xoa-san-pham&san_pham_id=<?= $SanPham["id_san_pham"] ?>"
+                                                                            class='btn btn-success'>xóa</a>                                                                   
+                                                                    </div>
+                                                                </td>
+
+
+
+
+                                                            </tr>
+                                                        <?php endforeach; ?>
                                                     </tbody>
                                                 </table>
                                             </div>

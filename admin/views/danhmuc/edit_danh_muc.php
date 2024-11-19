@@ -76,14 +76,14 @@
                                    
                                     <div class="live-preview">
                                         <form action="?act=sua-danh-muc" method="post" enctype="multipart/form-data" >
-                                            <input type="hidden" name="id" value="<?= $danhmuc['id'] ?>" >
+                                            <input type="hidden" name="id_danh_muc" value="<?= $danhmuc['id_danh_muc'] ?>" >
                                             <div class="row">
                                                
                                                 <!--end col-->
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label for="citynameInput" class="form-label">tên danh mục</label>
-                                                        <input type="text" class="form-control" placeholder="Nhập tên danh mục" name="ten_danh_muc" value="<?= $danhmuc['ten'] ?>" >
+                                                        <input type="text" class="form-control" placeholder="Nhập tên danh mục" name="ten_danh_muc" value="<?= $danhmuc['ten_danh_muc'] ?>" >
                                                         <span class="text-danger" >
                                                         <?= !empty($_SESSION['errors']['ten_danh_muc'])? $_SESSION['errors']['ten_danh_muc'] :'' ?>
                                                         </span>

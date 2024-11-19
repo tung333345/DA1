@@ -65,9 +65,19 @@
                                     Danh sách
                                 </a>
                             </li>
+                                                 
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarSanPham" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSanPham">
+                        <i class="ri-arrow-right-line ms-1"></i> <span data-key="t-advance-ui">Danh sách sản phẩm</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarSanPham">
+                        <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="?act=form-add-danh-muc" class="nav-link" data-key="t-nestable-list">
-                                    Thêm mới
+                                <a href="?act=san-pham" class="nav-link" data-key="t-sweet-alerts">
+                                    Danh sách
                                 </a>
                             </li>
                            

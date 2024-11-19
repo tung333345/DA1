@@ -18,7 +18,7 @@
         }
         public function postData($ten_danh_muc,$trang_thai){
             try {
-                $sql = "insert into danhmuc (ten,trang_thai)
+                $sql = "insert into danhmuc (ten_danh_muc,trang_thai)
                         values (:ten_danh_muc , :trang_thai)";
                 $stmt = $this->conn->prepare($sql);
                 $stmt->bindParam(':ten_danh_muc',$ten_danh_muc);
@@ -30,7 +30,7 @@
              }
         }
         public function deleteData($id){
-            $sql="delete from danhmuc where id=:id";
+            $sql="delete from danhmuc where id_danh_muc=:id";
             $stmt=$this->conn->prepare($sql);
             $stmt->bindParam(':id',$id);
             $stmt->execute();
@@ -40,7 +40,7 @@
         // lấy thông tin chi tiết
         public function getDetailData($id){
            try {
-            $sql="  select * from danhmuc where id=:id";
+            $sql="  select * from danhmuc where id_danh_muc=:id";
             $stmt=$this->conn->prepare($sql);
             $stmt->bindParam(':id',$id);
             $stmt->execute();
@@ -53,7 +53,7 @@
 
         public function updateData($id,$ten_danh_muc,$trang_thai){
             try {
-                $sql = "UPDATE danhmuc set ten=:ten_danh_muc , trang_thai=:trang_thai where id=:id";
+                $sql = "UPDATE danhmuc set ten_danh_muc=:ten_danh_muc , trang_thai=:trang_thai where id_danh_muc=:id";
                 $stmt = $this->conn->prepare($sql);
                 $stmt->bindParam(':ten_danh_muc',$ten_danh_muc);
                 $stmt->bindParam(':trang_thai',$trang_thai);

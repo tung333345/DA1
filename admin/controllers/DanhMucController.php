@@ -12,11 +12,18 @@ class DanhMucController{
         require_once "views/danhmuc/list_danh_muc.php";
     }
     public function create(){
+        if(!isset($_SESSION['form_submitted'])) {
+            unset($_SESSION['errors']);
+        } else {
+            unset($_SESSION['form_submitted']);
+        }
+        
         require_once "views/danhmuc/create_danh_muc.php";
     }
     public function store(){
         if($_SERVER['REQUEST_METHOD'] == "POST"  ){
             // lấy ra dữ liệu
+            
             $ten_danh_muc = $_POST['ten_danh_muc'];
             $trang_thai = $_POST['trang_thai'];
         //   validate
@@ -37,6 +44,7 @@ class DanhMucController{
         }
         else{
             $_SESSION['errors'] = $errors;
+            $_SESSION['form_submitted'] = true;
             header("location:?act=form-add-danh-muc");
             exit();
         }
@@ -55,7 +63,7 @@ class DanhMucController{
     public function update(){
         if($_SERVER['REQUEST_METHOD'] == "POST"  ){
             // lấy ra dữ liệu
-            $id=$_POST['id'];
+            $id=$_POST['id_danh_muc'];
             $ten_danh_muc = $_POST['ten_danh_muc'];
             $trang_thai = $_POST['trang_thai'];
         //   validate
@@ -82,6 +90,7 @@ class DanhMucController{
         }
         else{
             $_SESSION['errors'] = $errors;
+            
             header("location:?act=form-sua-danh-muc");
             exit();
         }
@@ -97,6 +106,7 @@ class DanhMucController{
         }
         
     }
+    
     
 
 }

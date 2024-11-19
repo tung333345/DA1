@@ -21,3 +21,28 @@ function connectDB() {
         echo ("Connection failed: " . $e->getMessage());
     }
 }
+// thêm file
+function uploadFile($file,$folderUpload){
+    $patStorage = $folderUpload . time().$file['name'];
+    $from = $file['tmp_name'];
+    $to = PATH_ROOT . $patStorage;
+
+    if (!is_dir(PATH_ROOT . $folderUpload)) {
+        mkdir(PATH_ROOT . $folderUpload, 0777, true);
+    }
+
+    if(move_uploaded_file($from,$to)){
+        return $patStorage;
+    } else {
+        // Thêm thông báo lỗi nếu không thể di chuyển file
+        echo "Lỗi khi upload file.";
+    }
+    return null;
+}
+function deleteFile($file){
+    $patDelete = PATH_ROOT.$file;
+    if(file_exists($patDelete)){
+        unlink($patDelete);
+    }
+}
+

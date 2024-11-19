@@ -7,15 +7,16 @@ require_once '../commons/function.php'; // Hàm hỗ trợ
 // Require toàn bộ file Controllers
 require_once 'controllers/DashboardController.php';
 require_once 'controllers/DanhMucController.php';
+require_once 'controllers/SanPhamController.php';
 
 // Require toàn bộ file Models
 require_once "models/DanhMucModel.php";
+require_once "models/SanPhamModel.php";
+
 // Route
 $act = $_GET['act'] ?? '/';
 
-// Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
-
-match ($act){
+match ($act) {
     // Dashboards
     '/'                 => (new DashboardController())->index(),
     // quản lý danh mục sản phẩm
@@ -27,11 +28,9 @@ match ($act){
     'xoa-danh-muc'      => (new DanhMucController())->destroy(),
     // quản lý sản phẩm
     'san-pham'          => (new SanPhamController())->index(),
-    'form-add-san-pham' => (new SanPhamController())->create(),
-    'them-san-pham'     => (new SanPhamController())->store(),
-    'form-sua-san-pham' => (new SanPhamController())->edit(),
-    'sua-san-pham'      => (new SanPhamController())->update(),
+    'form-add-san-pham' => (new SanPhamController())->createSanPham(),
+    'them-san-pham'     => (new SanPhamController())->postAddSanPham(),
+    'form-sua-san-pham' => (new SanPhamController())->editSanPham($_GET['san_pham_id'] ?? null),
+    'sua-san-pham'      => (new SanPhamController())->updateSanPham(),
     'xoa-san-pham'      => (new SanPhamController())->destroy()
-
-
 };
