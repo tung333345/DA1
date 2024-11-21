@@ -53,6 +53,7 @@
                                                 <tr>
                                                     <th scope="col">STT</th>
                                                     <th scope="col">Họ Tên</th>
+                                                    <th scope="col">Ảnh đại diện</th>
                                                     <th scope="col">Email</th>
                                                     <th scope="col">Số Điện Thoại</th>
                                                     <th scope="col">Trạng Thái</th>
@@ -64,6 +65,9 @@
                                                 <tr>
                                                     <td class="fw-medium"><?= $index+1 ?></td>
                                                     <td><?= htmlspecialchars($quantri['ho_ten']) ?></td>
+                                                    <td>
+                                                      <img src="<?= htmlspecialchars($quantri['anh_dai_dien']) ?>" alt="Ảnh đại diện" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
+                                                        </td>
                                                     <td><?= htmlspecialchars($quantri['email']) ?></td>
                                                     <td><?= htmlspecialchars($quantri['so_dien_thoai']) ?></td>
                                                     <td>
