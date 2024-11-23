@@ -8,15 +8,21 @@ require_once '../commons/function.php'; // Hàm hỗ trợ
 require_once 'controllers/DashboardController.php';
 require_once 'controllers/BaocaothongkeController.php';
 require_once 'controllers/TaiKhoanController.php';
+require_once 'controllers/QuanLyDonHangController.php';
+
 
 // Require toàn bộ file Models
 require_once "models/TaiKhoan.php";
 require_once 'controllers/DanhMucController.php';
 require_once 'controllers/SanPhamController.php';
 
+
 // Require toàn bộ file Models
 require_once "models/DanhMucModel.php";
 require_once "models/SanPhamModel.php";
+require_once "models/QuanLyDonHangModel.php";
+
+
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -48,7 +54,12 @@ match ($act) {
     'them-san-pham'     => (new SanPhamController())->postAddSanPham(),
     'form-sua-san-pham' => (new SanPhamController())->editSanPham($_GET['san_pham_id'] ?? null),
     'sua-san-pham'      => (new SanPhamController())->updateSanPham(),
-    'xoa-san-pham'      => (new SanPhamController())->destroy()
-   
+    'xoa-san-pham'      => (new SanPhamController())->destroy(),
+     //quan lý đơn hàng 
+     'don-hang'          => (new QuanLyDonHangController())->danhSachDonHang(),
+     'form-sua-don-hang' => (new QuanLyDonHangController())->formEditDonHang(),
+     'sua-don-hang'     => (new QuanLyDonHangController())->postEditDonHang(),
+     'xoa-don-hang'      => (new QuanLyDonHangController())->deleteDonHang(),
+     'chi-tiet-don-hang' => (new QuanLyDonHangController())->detailDonHang(),
 };
     
