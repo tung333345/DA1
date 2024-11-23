@@ -2,7 +2,11 @@
 
 class HomeController
 {
-    public function index() {
-        echo "Xưởng thực hành dự án 1";
-    }
+  public function __construct(){
+    $this->modelHome = new HomeModel();
+  }
+  public function index() {
+    $listSanPham = $this->modelHome->getAllSanPham();
+    require_once 'views/home.php';
+  }
 }
