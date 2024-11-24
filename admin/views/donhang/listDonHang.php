@@ -15,7 +15,9 @@
 
     <!-- CSS -->
     <?php
-    require_once "views/layouts/libs_css.php";
+    require_once __DIR__ . '/../layouts/libs_css.php';
+
+    // require_once "views/layouts/libs_css.php";
     ?>
 
 </head>
@@ -27,8 +29,10 @@
 
         <!-- HEADER -->
         <?php
-        require_once "views/layouts/header.php";
-        require_once "views/layouts/siderbar.php";
+        require_once __DIR__ . '/../layouts/header.php';
+        require_once __DIR__ . '/../layouts/siderbar.php';
+        // require_once "views/layouts/header.php";
+        // require_once "views/layouts/siderbar.php";
         ?>
 
         <!-- Left Sidebar End -->
@@ -91,12 +95,12 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <?php foreach ($litDonHang as $key => $donhang): ?>
+                                                        <?php foreach ($listDonHang as $key => $donhang): ?>
                                                             <tr>
                                                                 <td class="fw-medium"><?= $key + 1 ?></td>
                                                                 <td><?= $donhang['ma_don_hang'] ?></td>
                                                                 <td><?= $donhang['ten_nguoi_nhan'] ?></td>
-                                                                <td><?= $donhang['so_dien_thoai'] ?></td>
+                                                                <td><?= $donhang['sdt_nguoi_nhan'] ?></td>
                                                                 <td><?= $donhang['ngay_dat'] ?></td>
                                                                 <td><?= $donhang['tong_tien'] ?></td>
                                                                 <td><?= $donhang['ten_trang_thai'] ?></td>
@@ -105,8 +109,8 @@
 
                                                                 
                                                              
-                                                                <?php
-                                                                if ($SanPham['trang_thai'] == 1) {
+                                                                <!-- <?php
+                                                                if ($donhang['ten_trang_thai'] == 1) {
                                                                     ?>
                                                                     <td><span class="badge bg-success">Hiển thị</span></td>
                                                                     <?php
@@ -116,17 +120,16 @@
 
                                                                     <?php
                                                                 }
-                                                                ?>
-                                                                <td><?= $SanPham['mo_ta'] ?></td>
+                                                                ?> -->
+                                                               
 
 
 
                                                                 <td>
                                                                     <div  style="display: flex; gap: 10px;" >
-                                                                        <a href="?act=chi-tiet-don-hang&id_don_hang=<?= $donHang["id"] ?>"
-                                                                            class='btn btn-danger'>sửa</a>
-                                                                            <a href="?act=chi-tiet-don-hang&id_don_hang=<?= $donHang["id"] ?>"
-                                                                            class='btn btn-danger'>sửa</a>
+                                                                        <a href="?act=chi-tiet-don-hangs&id_don_hang=<?= $donHang["id"] ?>"
+                                                                            class='btn btn-danger'>Sửa</a>
+                                                                           
                                                                                                                                        
                                                                     </div>
                                                                 </td>
@@ -139,14 +142,14 @@
                                                     </tbody>
                                                     <tfoot>
                                                     <tr>
-                                                            <th scope="col">STT</th>
+                                                            <!-- <th scope="col">STT</th>
                                                             <th scope="col">MÃ ĐƠN HÀNG</th>
                                                             <th scope="col">TÊN NGƯỜI NHẬN</th>
                                                             <th scope="col">SỐ ĐIỆN THOẠI </th>
                                                             <th scope="col">NGÀY ĐẶT </th>
                                                             <th scope="col">TỔNG TIỀN</th>
                                                             <th scope="col">TRẠNG THÁI</th>
-                                                            <th scope="col">THAO TÁC</th>
+                                                            <th scope="col">THAO TÁC</th> -->
                                                         </tr>
                                                         </tfoot>
                                                 </table>

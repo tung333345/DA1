@@ -16,6 +16,7 @@
     <!-- CSS -->
     <?php
     require_once "views/layouts/libs_css.php";
+   
     ?>
 
 </head>
@@ -151,7 +152,7 @@
                                                             </tr>
                                                         <?php endforeach; ?>
                                                     </tbody>
-                                                    <tfoot>
+                                                    
                                                     <tr>
                                                             <th scope="col">STT</th>
                                                             <th scope="col">MÃ ĐƠN HÀNG</th>
@@ -162,7 +163,7 @@
                                                             <th scope="col">TRẠNG THÁI</th>
                                                             <th scope="col">THAO TÁC</th>
                                                         </tr>
-                                                        </tfoot>
+                                                        <!-- </tfoot> -->
                                                 </table>
                                             </div>
                                         </div>

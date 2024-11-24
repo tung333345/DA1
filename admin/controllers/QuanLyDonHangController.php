@@ -4,20 +4,21 @@ class QuanLyDonHangController{
     public $modelDonHang;
    
     public function __construct(){
-        $this->modelDonHang=new QuanLyDonHangController();
+    $this -> modelDonHang = new QuanLyDonHangModel();
        
     }
     public function danhSachDonHang(){
         // lấy ra dữ liệu danh mục
-        $listDonHang=$this->modelDonHang->getAllDonHang();
+        $listDonHang = $this->modelDonHang-> getAllDonHang ();
         // đưa dữ liệu ra view
         require_once "views/donhang/listDonHang.php";
+        // require_once "./admin/views/donhang/listDonHang.php";
     }
     public function detailDonHang(){
         $don_hang_id =$_GET['id_don_hang'];
         // lất thông tin đơn hàng ở bảng đơn_hangs
 
-        $donhang = $this->modelDonHang->getDetaiDonHang($don_hang_id);
+        $donhang = $this->modelDonHang-> getDetailDonHang($don_hang_id);
         // lấy danh sách sản phẩm đã đặt của đơn hàng ở bảng Chair_tiet_don_háng
         $sanPhamDonHang = $this->modelDonHang->getListSpDonHang($don_hang_id);
        

@@ -4,13 +4,12 @@
         function __construct(){
             $this->conn=connectDB();
         }
-
         // quan ly dơn hang
         public function getAllDonHang(){
             try {
-               $sql = 'SELECT don_hangs.*, trang_thai_don_hang.ten_trang_thai 
+               $sql = 'SELECT don_hangs.*, trang_thai_don_hangs.ten_trang_thai 
                FROM don_hangs
-               INNER JOIN trang_thai_don_hang ON don_hangs.trang_thai_id = trang_thai_don_hang.id';
+               INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_id = trang_thai_don_hangs.id';
                $stmt = $this->conn->prepare($sql);
                $stmt->execute();
                return $stmt->fetchAll();
@@ -21,9 +20,9 @@
          // lấy thông tin chi tiết
         public function getDetailDonHang($id){
            try {
-            $sql = 'SELECT don_hangs.*, trang_thai_don_hang.ten_trang_thai 
+            $sql = 'SELECT don_hangs.*, trang_thai_don_hangs.ten_trang_thai 
             FROM don_hangs
-            INNER JOIN trang_thai_don_hang ON don_hangs.trang_thai_id = trang_thai_don_hang.id WHERE don_hang_id = :id';
+            INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_id = trang_thai_don_hangs.id WHERE don_hang_id = :id';
            
             $stmt=$this->conn->prepare($sql);
             
