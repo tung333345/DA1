@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="assets/css/helper.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
     <title>Trang chủ</title>
 </head>
 
@@ -71,9 +73,11 @@
                             class="col-lg-6 col-md-6 col-12 order-lg-2 order-md-2 order-3 d-flex justify-content-center">
                             <nav class="main-menu">
                                 <ul>
-                                    <li><a href="?act=/">Home</a>
+                                    <li><a style="display: inline-block; white-space: nowrap;" href="?act=/">Trang
+                                            chủ</a>
                                     </li>
-                                    <li><a href="?act=san-pham&id=<?= isset($sanPham['id']) ? $sanPham['id'] : '' ?>">Shop</a>
+                                    <li><a style="display: inline-block; white-space: nowrap;"
+                                            href="?act=san-pham-theo-danh-muc">Sản phẩm</a>
                                         <!-- 
                                             <ul class="mega-menu four-column">
                                                 <li><a href="#" class="item-link">Pages</a>
@@ -131,10 +135,12 @@
                                             </ul>
                                          -->
                                     </li>
-                                    <li><a href="blog.html">Blog</a>
+                                    <li><a style="display: inline-block; white-space: nowrap;" href="blog.html">Blog</a>
                                     </li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a style="display: inline-block; white-space: nowrap;" href="about.html">About
+                                            Us</a></li>
+                                    <li><a style="display: inline-block; white-space: nowrap;"
+                                            href="contact.html">Contact Us</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -143,7 +149,7 @@
                         <!--Search Cart Start-->
                         <div class="col-lg-3 col-md-3 col-6 order-lg-3 order-md-3 order-2 d-flex justify-content-end">
                             <div class="header-search">
-                                <button class="header-search-toggle"><i class="fa fa-search"></i></button>
+                                
                                 <div class="header-search-form">
                                     <form action="#">
                                         <input type="text" placeholder="Type and hit enter">
@@ -194,13 +200,19 @@
                         <div class="common-sidebar-widget">
                             <h3 class="sidebar-title">DANH MỤC</h3>
                             <ul class="sidebar-list">
-                                <?php foreach ($danhMucs as $danhMuc): ?>
-                                    <li>
-                                        <a href="?act=san-pham-theo-danh-muc&id_danh_muc=<?php echo $danhMuc['id_danh_muc']; ?>">
-                                            <i class="fa fa-angle-right"></i><?php echo htmlspecialchars($danhMuc['ten_danh_muc']); ?>
-                                        </a>
-                                    </li>
-                                <?php endforeach; ?>
+                                <?php if (!empty($danhMucs)): ?>
+                                    <?php foreach ($danhMucs as $danhMuc): ?>
+                                        <li>
+                                            <a
+                                                href="?act=san-pham-theo-danh-muc&id_danh_muc=<?php echo $danhMuc['id_danh_muc']; ?>">
+                                                <i
+                                                    class="fa fa-angle-right"></i><?php echo htmlspecialchars($danhMuc['ten_danh_muc']); ?>
+                                            </a>
+                                        </li>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <li>Không có danh mục nào.</li>
+                                <?php endif; ?>
                             </ul>
                         </div>
                         <!-- Single Sidebar End  -->
@@ -208,18 +220,29 @@
                         <div class="common-sidebar-widget">
                             <h3 class="sidebar-title">Price</h3>
                             <ul class="sidebar-list">
-                                <li><a href="#"><i class="fa fa-angle-right"></i><span class="price">€0.00</span> -
-                                        <span class="price">€99.99</span> <span class="count">(7)</span></a></li>
-                                <li><a href="#"><i class="fa fa-angle-right"></i><span class="price">€100.00</span> and
-                                        above <span class="count">(14)</span></a></li>
+                                <!-- Tìm kiếm sản phẩm từ 0$ - 50$ -->
+                                <li>
+                                    <a href="?act=san-pham-theo-gia&min_price=0&max_price=50">
+                                        <i class="fa fa-angle-right"></i>
+                                        <span class="price">0$</span> - <span class="price">50$</span>
+                                    </a>
+                                </li>
+                                <!-- Tìm kiếm sản phẩm từ 50$ trở lên -->
+                                <li>
+                                    <a href="?act=san-pham-theo-gia&min_price=50">
+                                        <i class="fa fa-angle-right"></i>
+                                        <span class="price">50$</span> and above
+                                    </a>
+                                </li>
                             </ul>
                         </div>
+
                         <!-- Single Sidebar End  -->
                         <!-- Single Sidebar Start  -->
                         <div class="common-sidebar-widget">
                             <div class="single-banner">
                                 <a href="#">
-                                    <img src="assets/images/banner/h4-banner-2.png" alt="">
+                                    <img src="assets/images/banner/banner_doc.png" alt="">
                                 </a>
                             </div>
                         </div>
@@ -253,31 +276,7 @@
                                             </li>
                                         </ul> -->
                                     </div>
-                                    <!--Toolbar Short Area Start-->
-                                    <div class="toolbar-short-area d-md-flex align-items-center">
-                                        <div class="toolbar-shorter ">
-                                            <label>Sort By:</label>
-                                            <select class="wide">
-                                                <option data-display="Select">Nothing</option>
-                                                <option value="Relevance">Relevance</option>
-                                                <option value="Name, A to Z">Name, A to Z</option>
-                                                <option value="Name, Z to A">Name, Z to A</option>
-                                                <option value="Price, low to high">Price, low to high</option>
-                                                <option value="Price, high to low">Price, high to low</option>
-                                            </select>
-                                        </div>
-                                        <div class="toolbar-shorter ">
-                                            <label>Show</label>
-                                            <select class="small">
-                                                <option data-display="Select">9</option>
-                                                <option value="15">15</option>
-                                                <option value="30">30</option>
-                                            </select>
-                                            <span>per page</span>
-                                        </div>
 
-                                    </div>
-                                    <!--Toolbar Short Area End-->
                                 </div>
                                 <!-- Grid & List View End -->
                             </div>
@@ -289,45 +288,50 @@
                                         <div id="grid" class="tab-pane fade active show">
                                             <div class="product-grid-view">
                                                 <div class="row">
-                                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                                        <!-- Single Product Start -->
-                                                        <?php foreach ($listSanPham as $sanPham): ?>
-                                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                                <!-- Sản phẩm đơn lẻ Bắt đầu -->
-                                                                <div class="single-product mb-30"
-                                                                    style="border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
-                                                                    <div class="product-img">
-                                                                        <a href="single-product.html">
-                                                                            <img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>"
-                                                                                alt="<?= $sanPham['ten_san_pham'] ?>">
-                                                                        </a>
-                                                                        <div class="product-action"
-                                                                            style="display: flex; align-items: center; justify-content: center; padding: 4px; background-color: #f8f8f8; border-radius: 5px;">
-                                                                            <a class="product-btn" href="#"
-                                                                                style="background-color: #ff6f61; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: block; width: auto; text-align: center;">Add
-                                                                                to Cart</a>
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-content">
-                                                                        <h3><a
-                                                                                href="single-product.html"><?= $sanPham['ten_san_pham'] ?></a>
-                                                                        </h3>
-
-                                                                        <h4 class="price">
-                                                                            <span class="new"
-                                                                                style="color: #cea679; font-weight: bold;"><?= $sanPham['gia_khuyen_mai'] ?>$</span>
-                                                                            <span class="old"
-                                                                                style="text-decoration: line-through; color: grey;"><?= $sanPham['gia_san_pham'] ?>$</span>
-                                                                        </h4>
+                                                    <?php foreach ($currentProducts as $sanPham): ?>
+                                                        <div class="col-lg-3 col-md-4 col-sm-6 mb-30">
+                                                            <!-- Sản phẩm đơn lẻ Bắt đầu -->
+                                                            <div class="single-product"
+                                                                style="border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+                                                                <div class="product-img">
+                                                                    <a href="single-product.html">
+                                                                        <img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>"
+                                                                            alt="<?= $sanPham['ten_san_pham'] ?>">
+                                                                    </a>
+                                                                    <div class="product-action"
+                                                                        style="display: flex; align-items: center; justify-content: center; padding: 4px; background-color: #f8f8f8; border-radius: 5px;">
+                                                                        <a class="product-btn" href="#"
+                                                                            style="background-color: #ff6f61; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: block; width: auto; text-align: center;">Thêm
+                                                                            vào giỏ</a>
                                                                     </div>
                                                                 </div>
-                                                                <!-- Sản phẩm đơn lẻ Kết thúc -->
+                                                                <div class="product-content">
+                                                                    <p class=""><a
+                                                                            href="single-product.html"><?= $sanPham['ten_san_pham'] ?></a>
+                                                                    </p>
+                                                                    <h4 class="price">
+                                                                        <?php if (!empty($sanPham['gia_khuyen_mai'])): ?>
+                                                                            <span class="new"
+                                                                                style="color: #cea679; font-weight: bold; text-decoration: none;">
+                                                                                <?= $sanPham['gia_khuyen_mai'] ?>$
+                                                                            </span>
+                                                                            <span class="old"
+                                                                                style="text-decoration: line-through; color: #gray; ; font-weight: bold;">
+                                                                                <?= $sanPham['gia_san_pham'] ?>$
+                                                                            </span>
+                                                                        <?php else: ?>
+                                                                            <span class="old"
+                                                                                style="color: #000; font-weight: bold;">
+                                                                                <?= $sanPham['gia_san_pham'] ?>$
+                                                                            </span>
+                                                                        <?php endif; ?>
+
+                                                                    </h4>
+                                                                </div>
                                                             </div>
-                                                        <?php endforeach; ?>
-                                                        <!-- Single Product End -->
-                                                        < </div>
-                                                    </div>
+                                                            <!-- Sản phẩm đơn lẻ Kết thúc -->
+                                                        </div>
+                                                    <?php endforeach; ?>
                                                 </div>
                                                 <div id="list" class="tab-pane fade">
                                                     <div class="product-list-view">
@@ -674,11 +678,41 @@
                                 <div class="row mb-30 mb-sm-40 mb-xs-30">
                                     <div class="col">
                                         <ul class="page-pagination">
-                                            <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                            <li class="active"><a href="#">01</a></li>
-                                            <li><a href="#">02</a></li>
-                                            <li><a href="#">03</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                            <?php if ($currentPage > 1): ?>
+                                                <li>
+                                                    <a href="<?php if (isset($idDanhMuc)): ?>
+                                                        ?act=san-pham-theo-danh-muc&id_danh_muc=<?= $idDanhMuc ?>&page=<?= $currentPage - 1 ?>
+                                                    <?php else: ?>
+                                                        ?act=san-pham-theo-gia&min_price=<?= $minPrice ?>&max_price=<?= $maxPrice ?>&page=<?= $currentPage - 1 ?>
+                                                    <?php endif; ?>">
+                                                        <i class="fa fa-angle-left"></i>
+                                                    </a>
+                                                </li>
+                                            <?php endif; ?>
+
+                                            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                                                <li class="<?= $i == $currentPage ? 'active' : '' ?>">
+                                                    <a href="<?php if (isset($idDanhMuc)): ?>
+                                                        ?act=san-pham-theo-danh-muc&id_danh_muc=<?= $idDanhMuc ?>&page=<?= $i ?>
+                                                    <?php else: ?>
+                                                        ?act=san-pham-theo-gia&min_price=<?= $minPrice ?>&max_price=<?= $maxPrice ?>&page=<?= $i ?>
+                                                    <?php endif; ?>">
+                                                        <?= sprintf("%02d", $i) ?>
+                                                    </a>
+                                                </li>
+                                            <?php endfor; ?>
+
+                                            <?php if ($currentPage < $totalPages): ?>
+                                                <li>
+                                                    <a href="<?php if (isset($idDanhMuc)): ?>
+                                                        ?act=san-pham-theo-danh-muc&id_danh_muc=<?= $idDanhMuc ?>&page=<?= $currentPage + 1 ?>
+                                                    <?php else: ?>
+                                                        ?act=san-pham-theo-gia&min_price=<?= $minPrice ?>&max_price=<?= $maxPrice ?>&page=<?= $currentPage + 1 ?>
+                                                    <?php endif; ?>">
+                                                        <i class="fa fa-angle-right"></i>
+                                                    </a>
+                                                </li>
+                                            <?php endif; ?>
                                         </ul>
                                     </div>
                                 </div>
@@ -688,106 +722,54 @@
                 </div>
                 <!-- Shop Section End -->
 
-               
-                <footer class="footer-section section bg-dark">
-
-                    <!--Footer Top start-->
-                    <div
-                        class="footer-top section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-45 pb-lg-25 pb-md-15 pb-sm-5 pb-xs-0">
-                        <div class="container">
-                            <div class="row row-25">
-
-                                <!--Footer Widget start-->
-                                <div class="footer-widget col-lg-3 col-md-6 col-sm-6 col-12 mb-40 mb-xs-35">
-                                    <h4 class="title"><span class="text">About TheFace</span></h4>
-                                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                        fugiat
-                                        nulla pariatur. Excepteur sint occaecat cupidatat</p>
-                                    <div class="footer-social">
-                                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                                        <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-                                        <a href="#" class="linkedin"><i class="fa fa-instagram"></i></a>
-                                        <a href="#" class="pinterest"><i class="fa fa-pinterest-p"></i></a>
-                                        <a href="#" class="pinterest"><i class="fa fa-vimeo"></i></a>
-                                    </div>
-                                </div>
-                                <!--Footer Widget end-->
-
-
-                                <!--Footer Widget start-->
-                                <div class="footer-widget col-lg-3 col-md-6 col-sm-6 col-12 mb-40 mb-xs-35">
-                                    <h4 class="title"><span class="text">Information</span></h4>
-                                    <ul class="ft-menu">
-                                        <li><a href="#">Returns</a></li>
-                                        <li><a href="#">Delivery</a></li>
-                                        <li><a href="#">Service</a></li>
-                                        <li><a href="#">Gift Cards</a></li>
-                                        <li><a href="#">Mobile</a></li>
-                                        <li><a href="#">Gift Cards</a></li>
-                                        <li><a href="#">Unsubscribe Notification</a></li>
-                                    </ul>
-                                </div>
-                                <!--Footer Widget end-->
-
-
-                                <!--Footer Widget start-->
-                                <div class="footer-widget col-lg-3 col-md-6 col-sm-6 col-12 mb-40 mb-xs-35">
-                                    <h4 class="title"><span class="text">Our Offers</span></h4>
-                                    <ul class="ft-menu">
-                                        <li><a href="#">New products</a></li>
-                                        <li><a href="#">Top sellers</a></li>
-                                        <li><a href="#">Specials</a></li>
-                                        <li><a href="#">Manufacturers</a></li>
-                                        <li><a href="#">Suppliers</a></li>
-                                        <li><a href="#">Specials</a></li>
-                                        <li><a href="#">Service</a></li>
-                                    </ul>
-                                </div>
-                                <!--Footer Widget end-->
-
-                                <!--Footer Widget start-->
-                                <div class="footer-widget col-lg-3 col-md-6 col-sm-6 col-12 mb-40 mb-xs-35">
-                                    <h4 class="title"><span class="text">Contact us</span></h4>
-                                    <ul class="address">
-                                        <li><i class="fa fa-home"></i><span>HH2 BacHa building, Tohuu Street Hanoi,
-                                                Vietnam</span>
-                                        </li>
-                                        <li><i class="fa fa-phone"></i><span><a href="#">(08) 123 456 7890</a></span>
-                                        </li>
-                                        <li><i class="fa fa-envelope-o"></i><span><a
-                                                    href="#">yourmail@domain.com</a></span>
-                                        </li>
-                                    </ul>
-                                    <div class="payment-box mt-15 mb-15">
-                                        <a href="#"><img src="./assets/images/payment.png" alt=""></a>
-                                    </div>
-                                </div>
-                                <!--Footer Widget end-->
+                <footer class="footer bg-dark text-white">
+                    <div class="container py-4">
+                        <div class="row align-items-center">
+                            <!-- Logo và thông tin -->
+                            <div class="col-md-4 text-center text-md-left mb-3 mb-md-0">
+                                <img src="./assets/images/logofoo.png" alt="Logo" style="max-width: 120px;">
+                                <p class="mt-2 small">
+                                    Sản phẩm chất lượng, dịch vụ tận tâm. Luôn đồng hành cùng bạn.
+                                </p>
                             </div>
-                        </div>
-                    </div>
-                    <!--Footer Top end-->
 
-                    <!--Footer bottom start-->
-                    <div class="footer-bottom section">
-                        <div class="container ft-border pt-40 pb-40 pt-xs-20 pb-xs-20">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-lg-6 col-md-6 col-sm-8">
-                                    <div class="copyright text-left">
-                                        <p>Copyright &copy;2019 <a href="#">Theface</a>. All rights reserved.</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-4">
-                                    <div class="footer-logo text-right">
-                                        <a href="index.html"><img src="./assets/images/logofoo.png" alt=""></a>
-                                    </div>
+                            <!-- Liên kết nhanh -->
+                            <div class="col-md-4 text-center">
+                                <h5 class="mb-3">Liên kết</h5>
+                                <ul class="list-unstyled d-flex justify-content-center mb-0">
+                                    <li class="mx-3"><a href="#about" class="text-white text-decoration-none small">Về
+                                            chúng tôi</a></li>
+                                    <li class="mx-3"><a href="#policy"
+                                            class="text-white text-decoration-none small">Chính sách</a></li>
+                                    <li class="mx-3"><a href="#contact"
+                                            class="text-white text-decoration-none small">Liên hệ</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Mạng xã hội -->
+                            <div class="col-md-4 text-center text-md-right">
+                                <h5 class="mb-3">Kết nối</h5>
+                                <div class="d-flex justify-content-center justify-content-md-end">
+                                    <a href="#" class="text-white mx-2"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                                    <a href="#" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--Footer bottom end-->
+
+                    <!-- Phần bản quyền -->
+                    <div class="footer-bottom text-center py-3" style="border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                        <p class="mb-0 small">
+                            &copy; 2024 <a href="#" class="text-white text-decoration-none">YourBrand</a>. Tất cả quyền
+                            được bảo lưu.
+                        </p>
+                    </div>
                 </footer>
+
+
+
             </div>
 
 </body>
@@ -800,3 +782,67 @@
 </body>
 
 </html>
+<style>
+    /* Tổng thể footer */
+.footer {
+    background-color: #343a40;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Phần mô tả logo */
+.footer-description {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* Tiêu đề (Liên kết, Kết nối) */
+.footer-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Liên kết nhanh */
+.footer-links a {
+    font-size: 18px;
+    color: #ffffff; /* Màu chữ ban đầu */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Màu thay đổi mượt mà khi hover */
+}
+
+.footer-links a:hover {
+    color: #cea679; /* Màu chữ khi hover */
+}
+
+/* Mạng xã hội */
+.footer-icons .social-link {
+    font-size: 24px;
+    color: #ffffff;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-icons .social-link:hover {
+    color: #cea679; /* Màu hover cho icon */
+    transform: scale(1.2);
+}
+
+/* Bản quyền */
+.footer-bottom {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom a:hover {
+    color: #cea679; /* Màu chữ khi hover */
+}
+
+</style>

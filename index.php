@@ -23,7 +23,7 @@ $act = $_GET['act'] ?? '/';
 
 match ($act) {
     // Trang chủ
-    '/'                 => (new HomeController())->index(),
-    'san-pham'          => (new SanPhamController())->sanPham($_GET['id']),
-    'san-pham-theo-danh-muc' => (new SanPhamController())->sanPhamTheoDanhMuc(  idDanhMuc: $_GET['id_danh_muc']),
+    '/'                 => (new HomeController())->index(), 
+    'san-pham-theo-danh-muc' => (new SanPhamController())->sanPhamTheoDanhMuc($_GET['id_danh_muc'] ?? null),
+    'san-pham-theo-gia' => (new SanPhamController())->sanPhamTheoGia($_GET['min_price'] ?? null, $_GET['max_price'] ?? null),
 };

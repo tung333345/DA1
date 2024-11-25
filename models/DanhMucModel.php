@@ -1,9 +1,10 @@
-<?php 
+<?php
 
 class DanhMucModel
 {
     public $conn;
-    public function __construct() {
+    public function __construct()
+    {
         $this->conn = connectDB();
     }
     public function getAllDanhMuc()
@@ -17,4 +18,13 @@ class DanhMucModel
             echo "Lỗi: " . $th->getMessage();
         }
     }
+    public function getDanhMucById($id)
+    {
+        $sql = "SELECT * FROM danhmuc WHERE id_danh_muc = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
 }

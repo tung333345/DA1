@@ -50,9 +50,7 @@ class SanPhamController{
         if (empty($gia_san_pham)) {
             $errors['gia_san_pham']="giá sản phẩm là bắt buộc";
         }
-        if (empty($gia_khuyen_mai)) {
-            $errors['gia_khuyen_mai']="giá khuyến mãi sản phẩm là bắt buộc";
-        }
+       
         if (empty($so_luong)) {
             $errors['so_luong']="số lượng sản phẩm là bắt buộc";
         }

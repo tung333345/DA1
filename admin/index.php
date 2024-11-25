@@ -6,6 +6,11 @@ require_once '../commons/function.php'; // Hàm hỗ trợ
 
 // Require toàn bộ file Controllers
 require_once 'controllers/DashboardController.php';
+require_once 'controllers/BaocaothongkeController.php';
+require_once 'controllers/TaiKhoanController.php';
+
+// Require toàn bộ file Models
+require_once "models/TaiKhoan.php";
 require_once 'controllers/DanhMucController.php';
 require_once 'controllers/SanPhamController.php';
 
@@ -16,9 +21,20 @@ require_once "models/SanPhamModel.php";
 // Route
 $act = $_GET['act'] ?? '/';
 
+// Sử dụng match để xử lý routing
 match ($act) {
-    // Dashboards
-    '/'                 => (new DashboardController())->index(),
+    // Trang chủ (báo cáo thống kê)
+    // '/' => (new BaocaothongkeController())->home(),
+    // Dashboard
+    '/' => (new DashboardController())->index(),
+
+    // Quản lý tài khoản quản trị
+    'list-tai-khoan-quan-tri' => (new TaiKhoanController())->danhsachQuanTri(),
+    'form-them-quan-tri' => (new TaiKhoanController())->formAddQuanTri(),
+    'them-quan-tri' => (new TaiKhoanController())->postAddQuanTri(),
+    'form-sua-quan-tri' => (new TaiKhoanController())->formEditQuanTri(),
+    'sua-quan-tri' => (new TaiKhoanController())->postEditQuanTri(),
+    'xoa-quan-tri' => (new TaiKhoanController())->deleteQuanTri(),
     // quản lý danh mục sản phẩm
     'danh-mucs'         => (new DanhMucController())->index(),
     'form-add-danh-muc' => (new DanhMucController())->create(),
@@ -33,4 +49,6 @@ match ($act) {
     'form-sua-san-pham' => (new SanPhamController())->editSanPham($_GET['san_pham_id'] ?? null),
     'sua-san-pham'      => (new SanPhamController())->updateSanPham(),
     'xoa-san-pham'      => (new SanPhamController())->destroy()
+   
 };
+    
