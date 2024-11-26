@@ -127,8 +127,12 @@
 
                                                                 <td>
                                                                     <div  style="display: flex; gap: 10px;" >
-                                                                        <a href="?act=chi-tiet-don-hangs&id_don_hang=<?= $donHang["id"] ?>"
-                                                                            class='btn btn-danger'>Sửa</a>
+                                                                
+                                                                        <a href="?act=chi-tiet-don-hangs&id_don_hang=<?= $donhang["id"] ?>">
+                                                                            <button class='btn btn-primary'>
+                                                                                <i class="fas fa-eye"></i>Chi tiết</button></a>
+                                                                            <a href="?act=form-sua-don-hangs&id_don_hang=<?= $donhang["id"] ?>"
+                                                                            class='btn btn-danger'><i class="fas fa-cogs"></i>Sửa</a>
                                                                            
                                                                                                                                        
                                                                     </div>

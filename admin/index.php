@@ -57,9 +57,13 @@ match ($act) {
     'xoa-san-pham'      => (new SanPhamController())->destroy(),
      //quan lý đơn hàng 
      'don-hang'          => (new QuanLyDonHangController())->danhSachDonHang(),
-     'form-sua-don-hang' => (new QuanLyDonHangController())->formEditDonHang(),
+     'form-sua-don-hangs' => (new QuanLyDonHangController())->formEditDonHang(),
      'sua-don-hang'     => (new QuanLyDonHangController())->postEditDonHang(),
      'xoa-don-hang'      => (new QuanLyDonHangController())->deleteDonHang(),
      'chi-tiet-don-hang' => (new QuanLyDonHangController())->detailDonHang(),
+     'chi-tiet-don-hangs' => (new QuanLyDonHangController())->detailDonHang(),
+
+
+    //  default => throw new Exception("Không tìm thấy route: $act"),
 };
     

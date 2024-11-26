@@ -16,14 +16,15 @@ class QuanLyDonHangController{
     }
     public function detailDonHang(){
         $don_hang_id =$_GET['id_don_hang'];
+
         // lất thông tin đơn hàng ở bảng đơn_hangs
 
         $donhang = $this->modelDonHang-> getDetailDonHang($don_hang_id);
         // lấy danh sách sản phẩm đã đặt của đơn hàng ở bảng Chair_tiet_don_háng
         $sanPhamDonHang = $this->modelDonHang->getListSpDonHang($don_hang_id);
-       
+        // echo "Chi tiết đơn hàng!";
         
-        require_once './views/donhang/detaiDonHang.php';
+        require_once __DIR__ . '/views/donhang/detaiDonHang.php';
     }
 
     // public function createSanPham(){

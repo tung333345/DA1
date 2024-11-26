@@ -15,7 +15,10 @@
 
     <!-- CSS -->
     <?php
-    require_once "views/layouts/libs_css.php";
+    require_once __DIR__ . '/../layouts/libs_css.php';
+    
+
+    // require_once "views/layouts/libs_css.php";
    
     ?>
 
@@ -28,8 +31,13 @@
 
         <!-- HEADER -->
         <?php
-        require_once "views/layouts/header.php";
-        require_once "views/layouts/siderbar.php";
+         require_once __DIR__ . '/../layouts/libs_css.php';
+         require_once __DIR__ . '/../layouts/header.php';
+         require_once __DIR__ . '/../layouts/siderbar.php';
+         require_once __DIR__ . '/../layouts/libs_js.php';
+         
+        // require_once "views/layouts/header.php";
+        // require_once "views/layouts/siderbar.php";
         ?>
 
         <!-- Left Sidebar End -->
@@ -49,7 +57,7 @@
                         <div class="col-12">
                             <div
                                 class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                                <h4 class="mb-sm-0">Quản lý danh sách đon hàng-đơn hàng:<?=$donHang['ma_don_hang']?></h4>
+                                <h4 class="mb-sm-0">Quản lý danh sách đon hàng-đơn hàng:<?=$donhang['ma_don_hang']?></h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
@@ -60,19 +68,19 @@
 
                             </div>
                             <?php 
-                            if ($donHang['trang_thai_id']=1){
+                            if ($donhang['trang_thai_id']==1){
                                 $colorAlerts = 'primary';
-                            }elseif($donHang['trang_thai_id']>=2 || $donHang['trang_thai_id']<=9){
+                            }elseif($donhang['trang_thai_id']>=2 && $donhang['trang_thai_id']<=9){
                                 $colorAlerts = 'warning';
 
-                            }elseif($donHang['trang_thai_id']==10){
+                            }elseif($donhang['trang_thai_id']==10){
                                 $colorAlerts = 'success';
                             }else{
                                 $colorAlerts = 'danger';
                             }
                             ?>
-                            <div class="alert alert-<? $colorAlerts; ?>"role="alert">
-                                Đơn hàng:<?=$donHang['ten_trang_thai']?>
+                            <div class="alert alert-<?= $colorAlerts; ?>"role="alert">
+                                Đơn hàng:<?=$donhang['ten_trang_thai']?>
                             </div>
                         </div>
                     </div>
@@ -85,8 +93,38 @@
                                     <div class="card-header align-items-center d-flex">
                                         <h4 class="card-title mb-0 flex-grow-1">Danh sách đơn hàng</h4>
                                        <i class="fas fa-globe"></i>Thực phẩm chức năng NUTRI HARMONY
-                                       <small class="float-right">Date:2/10/2024</small>
+                                       <small class="float-right">Date: <?php formatDate($donhang['ngay_dat'])
+                                       ?></small></h4>
                                     </div><!-- end card header -->
+                                    <div class="row invoice-infor">
+                                        <div class="col-sm-4 invoice-col"> 
+                                            Thông tin người đặt
+                                            <address>
+                                                <strong><?= $donhang['ho_ten'] ?></strong><br>
+                                                Email:<?= $donhang['email']?><br>
+                                                SDT:<?= $donhang['so_dien_thoai']?><br>
+                                            </address>
+                                        </div>
+                                        <div class="col-sm-4 invoice-col"> 
+                                            Thông tin người nhận
+                                            <address>
+                                                <strong><?= $donhang['ten_nguoi_nhan'] ?></strong><br>
+                                                Email:<?= $donhang['email_nguoi_nhan']?><br>
+                                                SDT:<?= $donhang['sdt_nguoi_nhan']?><br>
+                                                Địa chỉ:<?= $donhang['dia_chi_nguoi_nhan']?><br>
+                                            </address>
+                                        </div>
+                                        <div class="col-sm-4 invoice-col"> 
+                                            Thông tin
+                                            
+                                              <b>  Mã đon hàng:<?= $donhang['ma_don_hang'] ?></b><br>
+                                              <b>   Tổng tiền:<?= $donhang['tong_tien']?>
+                                              <b>   Ghi chú:<?= $donhang['ghi_chu']?>
+                                              <b> Phương thức thanh toán:<?= $donhang['ten_phuong_thuc']?>
+                                            </address>
+                                        </div>
+
+                                    </div>
 
                                     <div class="card-body">
 
@@ -96,75 +134,61 @@
                                                     <thead>
                                                         <tr>
                                                             <th scope="col">STT</th>
-                                                            <th scope="col">MÃ ĐƠN HÀNG</th>
-                                                            <th scope="col">TÊN NGƯỜI NHẬN</th>
-                                                            <th scope="col">SỐ ĐIỆN THOẠI </th>
-                                                            <th scope="col">NGÀY ĐẶT </th>
-                                                            <th scope="col">TỔNG TIỀN</th>
-                                                            <th scope="col">TRẠNG THÁI</th>
-                                                            <th scope="col">THAO TÁC</th>
+                                                            <th scope="col">TÊN SẢN PHẨM</th>
+                                                            <th scope="col">ĐON GIÁ</th>
+                                                            <th scope="col">SỐ LƯỢNG</th>
+                                                           
+                                                            <th scope="col">THÀNH TIỀN</th>
+                                                           
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <?php foreach ($litDonHang as $key => $donhang): ?>
+                                                        <?php $tong_tien = 0;?>
+                                                        <?php
+                                                         foreach ($sanPhamDonHang as $key => $sanPham): ?>
                                                             <tr>
                                                                 <td class="fw-medium"><?= $key + 1 ?></td>
-                                                                <td><?= $donhang['ma_don_hang'] ?></td>
-                                                                <td><?= $donhang['ten_nguoi_nhan'] ?></td>
-                                                                <td><?= $donhang['so_dien_thoai'] ?></td>
-                                                                <td><?= $donhang['ngay_dat'] ?></td>
-                                                                <td><?= $donhang['tong_tien'] ?></td>
-                                                                <td><?= $donhang['ten_trang_thai'] ?></td>
+                                                                <td><?= $sanPham['ten_san_pham'] ?></td>
+                                                                <td><?= $sanPham['don_gia'] ?></td>
+                                                                <td><?= $sanPham['so_dien_thoai'] ?></td>
+                                                                <td><?= $sanPham['thanh_tien'] ?></td>
+                                                                
                                                                
                                                                 
 
-                                                                
-                                                             
-                                                                <?php
-                                                                if ($SanPham['trang_thai'] == 1) {
-                                                                    ?>
-                                                                    <td><span class="badge bg-success">Hiển thị</span></td>
-                                                                    <?php
-                                                                } else {
-                                                                    ?>
-                                                                    <td><span class="badge bg-danger">Không hiển thị</span></td>
-
-                                                                    <?php
-                                                                }
-                                                                ?>
-                                                                <td><?= $SanPham['mo_ta'] ?></td>
-
-
-
-                                                                <td>
-                                                                    <div  style="display: flex; gap: 10px;" >
-                                                                        <a href="?act=chi-tiet-don-hang&id_don_hang=<?= $donHang["id"] ?>"
-                                                                            class='btn btn-danger'>sửa</a>
-                                                                            <a href="?act=chi-tiet-don-hang&id_don_hang=<?= $donHang["id"] ?>"
-                                                                            class='btn btn-danger'>sửa</a>
-                                                                                                                                       
-                                                                    </div>
-                                                                </td>
-
-
-
+                                                                                         
 
                                                             </tr>
+                                                            <?php $tong_tien +=$sanPham['thanh_tien'] ;?>
                                                         <?php endforeach; ?>
                                                     </tbody>
                                                     
-                                                    <tr>
-                                                            <th scope="col">STT</th>
-                                                            <th scope="col">MÃ ĐƠN HÀNG</th>
-                                                            <th scope="col">TÊN NGƯỜI NHẬN</th>
-                                                            <th scope="col">SỐ ĐIỆN THOẠI </th>
-                                                            <th scope="col">NGÀY ĐẶT </th>
-                                                            <th scope="col">TỔNG TIỀN</th>
-                                                            <th scope="col">TRẠNG THÁI</th>
-                                                            <th scope="col">THAO TÁC</th>
-                                                        </tr>
+                                                   
                                                         <!-- </tfoot> -->
                                                 </table>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <p class="lead">Ngày đặt hàng:<?= $donhang['ngay_dat']?></p>
+                                           <div class="table-responsive">
+                                            <table class="table">
+                                                <tr>
+                                                <th style="width:50%">Thành tiền</th>
+                                                <td><?= $tong_tien  ?></td>
+                                                </tr>
+                                                <tr>
+                                                <th style="width:50%">Vận chuyển</th>
+                                                <td>10.000</td>
+                                                </tr>
+                                                <tr>
+                                                <th style="width:50%">Tổng tiền</th>
+                                                <td><?= $tong_tien +100000  ?></td>
+                                                </tr>
+                                                
+                                            </table>
+
+                                           </div>
                                             </div>
                                         </div>
 
@@ -230,6 +254,8 @@
     <!-- JAVASCRIPT -->
     <?php
     require_once "views/layouts/libs_js.php";
+    
+
     ?>
 
 </body>
