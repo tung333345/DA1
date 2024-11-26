@@ -35,6 +35,8 @@ match ($act) {
     'form-sua-quan-tri' => (new TaiKhoanController())->formEditQuanTri(),
     'sua-quan-tri' => (new TaiKhoanController())->postEditQuanTri(),
     'xoa-quan-tri' => (new TaiKhoanController())->deleteQuanTri(),
+    // tài khoản khách hàng
+    'list-tai-khoan-khach-hang' => (new TaiKhoanController())->danhsachKhachHang(),
     // quản lý danh mục sản phẩm
     'danh-mucs'         => (new DanhMucController())->index(),
     'form-add-danh-muc' => (new DanhMucController())->create(),
@@ -49,7 +51,7 @@ match ($act) {
     'form-sua-san-pham' => (new SanPhamController())->editSanPham($_GET['san_pham_id'] ?? null),
     'sua-san-pham'      => (new SanPhamController())->updateSanPham(),
     'xoa-san-pham'      => (new SanPhamController())->destroy(),
-    'list-tai-khoan-khach-hang' => (new TaiKhoanController())->danhsachKhachHang(),
+   
 
    
 };

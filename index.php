@@ -14,6 +14,17 @@ require_once './controllers/UserController.php';
 require_once './models/User.php';
 /* ---------------------------------- MODEL --------------------------------- */
 
+// Require toàn bộ file Controllers
+require_once './controllers/HomeController.php';
+require_once './controllers/SanPhamController.php';
+
+// Require toàn bộ file Models
+require_once './models/HomeModel.php';
+require_once './models/SanPhamModel.php';
+require_once './models/DanhMucModel.php';
+
+
+
 /* --------------------------------- ROUTER --------------------------------- */
 $act = $_GET['act'] ?? '/';
 /* --------------------------------- ROUTER --------------------------------- */
@@ -26,4 +37,6 @@ match ($act) {
     'trang-chu'                 => (new HomeController())->index(),
     'tai-khoan'           => (new UserController())->account(),
     'dang-xuat'         => (new UserController())->logout(),
+    'san-pham-theo-danh-muc' => (new SanPhamController())->sanPhamTheoDanhMuc($_GET['id_danh_muc'] ?? null),
+    'san-pham-theo-gia' => (new SanPhamController())->sanPhamTheoGia($_GET['min_price'] ?? null, $_GET['max_price'] ?? null),
 };

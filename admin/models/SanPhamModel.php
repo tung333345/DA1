@@ -32,6 +32,7 @@ class SanPhamModel
     public function updateSanPham($san_pham_id, $ten_san_pham, $gia_san_pham, $gia_khuyen_mai, $so_luong, $id_danh_muc, $trang_thai, $mo_ta, $hinh_anh)
     {
         try {
+            $gia_khuyen_mai = empty($gia_khuyen_mai) ? null : $gia_khuyen_mai;
             $sql = "UPDATE sanpham SET ten_san_pham = :ten_san_pham, gia_san_pham = :gia_san_pham, gia_khuyen_mai = :gia_khuyen_mai, so_luong = :so_luong, id_danh_muc = :id_danh_muc, trang_thai = :trang_thai, mo_ta = :mo_ta, hinh_anh = :hinh_anh WHERE id_san_pham = :id_san_pham";
             $stmt = $this->conn->prepare($sql);
 
@@ -53,6 +54,7 @@ class SanPhamModel
     public function insertSanPham($ten_san_pham, $gia_san_pham, $gia_khuyen_mai, $so_luong, $ngay_nhap, $id_danh_muc, $trang_thai, $mo_ta, $hinh_anh)
     {
         try {
+            $gia_khuyen_mai = empty($gia_khuyen_mai) ? null : $gia_khuyen_mai;
             $sql = "INSERT INTO  sanpham (ten_san_pham,gia_san_pham,gia_khuyen_mai,so_luong,ngay_tao,id_danh_muc,trang_thai,mo_ta,hinh_anh)
                     values (:ten_san_pham ,:gia_san_pham ,:gia_khuyen_mai ,:so_luong ,:ngay_nhap ,:id_danh_muc ,:trang_thai ,:mo_ta ,:hinh_anh)";
             $stmt = $this->conn->prepare($sql);

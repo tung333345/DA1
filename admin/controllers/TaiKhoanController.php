@@ -12,7 +12,7 @@ class TaiKhoanController
     public function danhsachQuanTri()
     {
         $listQuanTri = $this->modelTaiKhoan->getAllTaiKhoan(1);
-        require_once './views/taikhoan/quantri/listQuanTri.php';
+        require_once './views/taikhoan/listQuanTri.php';
     }
     public function danhsachKhachHang()
     {
@@ -22,7 +22,7 @@ class TaiKhoanController
     // Hiển thị form thêm tài khoản quản trị
     public function formAddQuanTri()
     {
-        require_once './views/taikhoan/quantri/addQuanTri.php';
+        require_once './views/taikhoan/addQuanTri.php';
     }
 
     // Xử lý thêm tài khoản quản trị
@@ -86,7 +86,7 @@ class TaiKhoanController
             exit();
         }
 
-        require_once './views/taikhoan/quantri/editQuanTri.php';
+        require_once './views/taikhoan/editQuanTri.php';
     }
 
     // Xử lý sửa tài khoản quản trị

@@ -2,7 +2,16 @@
 
 class HomeController
 {
-    public function index() {
-        include './views/index.php';
-    }
+  public  $modelDanhMuc;
+  public  $modelHome;
+  
+  public function __construct(){
+    $this->modelHome = new HomeModel();
+    
+  }
+  public function index() {
+    $listSanPham = $this->modelHome->getAllSanPham();
+  
+    require_once 'views/home.php';
+  }
 }
