@@ -79,10 +79,10 @@
                                                     </td>
                                                     <td>
                                                         <div class="d-flex gap-2">
-                                                            <a href="?act=form-sua-quan-tri&id_quan_tri=<?=$quantri["id"]?>" class="btn btn-primary btn-sm">Sửa</a>
+                                                        <a href="?act=form-sua-quan-tri&id_quan_tri=<?=$quantri["id"]?>" class="btn btn-primary ">Sửa</a>
                                                             <form method="post" onsubmit="return confirm('Bạn có muốn xóa không?')" action="?act=xoa-quan-tri">
                                                                 <input type="hidden" name="id_quan_tri" value="<?=$quantri["id"]?>">
-                                                                <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+                                                                <button type="submit" class="btn btn-danger ">Xóa</button>
                                                             </form>
                                                         </div>
                                                     </td>

@@ -14,7 +14,11 @@ class TaiKhoanController
         $listQuanTri = $this->modelTaiKhoan->getAllTaiKhoan(1);
         require_once './views/taikhoan/quantri/listQuanTri.php';
     }
-
+    public function danhsachKhachHang()
+    {
+        $khachhangs = $this->modelTaiKhoan->getAllCustomer();
+        require_once './views/taikhoan/khachhang/listKhachHang.php';
+    }
     // Hiển thị form thêm tài khoản quản trị
     public function formAddQuanTri()
     {

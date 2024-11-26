@@ -48,7 +48,9 @@ match ($act) {
     'them-san-pham'     => (new SanPhamController())->postAddSanPham(),
     'form-sua-san-pham' => (new SanPhamController())->editSanPham($_GET['san_pham_id'] ?? null),
     'sua-san-pham'      => (new SanPhamController())->updateSanPham(),
-    'xoa-san-pham'      => (new SanPhamController())->destroy()
+    'xoa-san-pham'      => (new SanPhamController())->destroy(),
+    'list-tai-khoan-khach-hang' => (new TaiKhoanController())->danhsachKhachHang(),
+
    
 };
     

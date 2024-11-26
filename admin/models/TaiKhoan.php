@@ -21,7 +21,22 @@ class TaiKhoan
             echo "Lỗi: " . $e->getMessage();
         }
     }
-
+    public function getAllCustomer()
+    {
+        try {
+            $sql = 'SELECT * FROM nguoidung';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            
+            // Lấy toàn bộ kết quả trả về và lưu vào $res
+            $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $res; // Trả về danh sách khách hàng
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+            return false; // Trả về false nếu xảy ra lỗi
+        }
+    }
     // Lấy tài khoản theo ID
     public function getTaiKhoanById($id)
     {
