@@ -54,6 +54,11 @@ class SanPhamController
 
         require_once 'views/shop.php';
     }
+    public function sanPhamChiTiet($idSanPham = null)
+    {
+        $sanPham = $this->modelSanPham->getSanPhamById($idSanPham);
+        require_once 'views/single-product.php';
+    }
 
 
 

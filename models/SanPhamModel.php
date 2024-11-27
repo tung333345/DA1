@@ -113,6 +113,13 @@ public function getSanPhamByPriceRangeWithPagination($minPrice, $maxPrice, $limi
         echo "Lỗi: " . $th->getMessage();
     }
 }
+public function getSanPhamById($idSanPham){
+    $sql = "Select * from sanpham where id_san_pham=:idSanPham";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bindParam(':idSanPham', $idSanPham, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetch();
+}
 
 }
 

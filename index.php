@@ -39,4 +39,5 @@ match ($act) {
     'dang-xuat'         => (new UserController())->logout(),
     'san-pham-theo-danh-muc' => (new SanPhamController())->sanPhamTheoDanhMuc($_GET['id_danh_muc'] ?? null),
     'san-pham-theo-gia' => (new SanPhamController())->sanPhamTheoGia($_GET['min_price'] ?? null, $_GET['max_price'] ?? null),
+    'san-pham-chi-tiet' => (new SanPhamController())->sanPhamChiTiet($_GET['id_san_pham'] ?? null),
 };

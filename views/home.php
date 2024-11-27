@@ -334,7 +334,7 @@
                                                     </div>
                                                     <div class="product-content">
                                                         <p class="fw-bold text-center text-uppercase text-success"><a
-                                                                href="single-product.html"><?= $sanPham['ten_san_pham'] ?></a>
+                                                                href="?act=san-pham-chi-tiet&id_san_pham=<?= $sanPham['id_san_pham'] ?>"><?= $sanPham['ten_san_pham'] ?></a>
                                                         </p>
                                                         <h4 class="price">
                                                             <span class="new"
