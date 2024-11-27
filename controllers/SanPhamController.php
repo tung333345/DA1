@@ -57,6 +57,7 @@ class SanPhamController
     public function sanPhamChiTiet($idSanPham = null)
     {
         $sanPham = $this->modelSanPham->getSanPhamById($idSanPham);
+        $sanPhamLienQuan = $this->modelSanPham->getSanPhamLienQuan($sanPham['id_danh_muc'], $idSanPham);
         require_once 'views/single-product.php';
     }
 

@@ -42,13 +42,13 @@
                                 <ul class="ht-us-menu d-flex">
                                     <li>
                                     <?php if (isset($_SESSION['user'])): ?>
-                                            <a href="#"><i class="fa fa-user-circle-o"></i> <?= $_SESSION['user']['ten_dang_nhap'] ?></a>
+                                            <a href="#"><i class="fas fa-user-circle"></i> <?= $_SESSION['user']['ten_dang_nhap'] ?></a>
                                             <ul class="ht-dropdown right">
                                                 <li><a href="my-account.html">My Account</a></li>
                                                 <li><a href="?act=dang-xuat">Đăng xuất</a></li>
                                             </ul>
                                         <?php else: ?>
-                                            <a href="?act=tai-khoan"><i class="fa fa-user-circle-o"></i>Tài khoản</a>
+                                            <a href="?act=tai-khoan"><i class="fa fa-user-circle"></i>Tài khoản</a>
                                             <ul class="ht-dropdown right">
                                                 <li><a href="?act=tai-khoan">Đăng nhập</a></li>
                                                 <li><a href="?act=tai-khoan">Đăng ký</a></li>
@@ -357,7 +357,44 @@
         </div>
         <!--Product Description Review Section Start-->
 
- 
+        <!-- Related Products Section Start -->
+        <div class="related-products-section section pt-30 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-30 pb-xs-20">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="section-title text-center mb-30">
+                            <h2>Sản phẩm cùng danh mục</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <?php foreach ($sanPhamLienQuan as $sp): ?>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-product">
+                            <div class="product-img">
+                                <a href="?act=chi-tiet-san-pham&id=<?= $sp['id_san_pham'] ?>">
+                                    <img src="<?= $sp['hinh_anh'] ?>" alt="<?= $sp['ten_san_pham'] ?>">
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <h3><a href="?act=chi-tiet-san-pham&id=<?= $sp['id_san_pham'] ?>"><?= $sp['ten_san_pham'] ?></a></h3>
+                                <div class="product-price">
+                                    <?php if ($sp['gia_khuyen_mai'] > 0): ?>
+                                    <span class="new-price"><?= $sp['gia_khuyen_mai'] ?>$</span>
+                                    <span class="old-price"><?= $sp['gia_san_pham'] ?>$</span>
+                                    <?php else: ?>
+                                    <span class="new-price"><?= $sp['gia_san_pham'] ?>$</span>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+        <!-- Related Products Section End -->
+
         <footer class="footer-section section bg-dark">
 
             <!--Footer Top start-->

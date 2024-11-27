@@ -121,6 +121,22 @@ public function getSanPhamById($idSanPham){
     return $stmt->fetch();
 }
 
+public function getSanPhamLienQuan($idDanhMuc, $idSanPham)
+{
+    try {
+        $sql = "SELECT * FROM sanpham 
+                WHERE id_danh_muc = :idDanhMuc AND id_san_pham != :idSanPham 
+                LIMIT 4";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':idDanhMuc', $idDanhMuc, PDO::PARAM_INT);
+        $stmt->bindParam(':idSanPham', $idSanPham, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $th) {
+        echo "Lỗi: " . $th->getMessage();
+    }
+}
+
 }
 
 ?>

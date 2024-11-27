@@ -40,7 +40,7 @@
                         <div class="col-xl-6 col-lg-4">
                             <div class="ht-right d-flex justify-content-lg-end justify-content-center">
                                 <ul class="ht-us-menu d-flex">
-                                    <li><a href="#"><i class="fa fa-user-circle-o"></i>Login</a>
+                                    <li><a href="#"><i class="fa fa-user-circle"></i>Login</a>
                                         <ul class="ht-dropdown right">
                                             <!-- <li><a href="compare.html">Compare Products</a></li> -->
                                             <li><a href="my-account.html">My Account</a></li>
