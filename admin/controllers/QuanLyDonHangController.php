@@ -15,7 +15,7 @@ class QuanLyDonHangController{
         // require_once "./admin/views/donhang/listDonHang.php";
     }
     public function detailDonHang(){
-        $don_hang_id =$_GET['id_don_hang'];
+        $don_hang_id = $_GET['id_don_hang'];
 
         // lất thông tin đơn hàng ở bảng đơn_hangs
 
@@ -23,8 +23,9 @@ class QuanLyDonHangController{
         // lấy danh sách sản phẩm đã đặt của đơn hàng ở bảng Chair_tiet_don_háng
         $sanPhamDonHang = $this->modelDonHang->getListSpDonHang($don_hang_id);
         // echo "Chi tiết đơn hàng!";
-        
-        require_once __DIR__ . '/views/donhang/detaiDonHang.php';
+                require_once "views/donhang/detailDonHang.php";
+
+        // require_once __DIR__ . '/views/donhang/detailDonHang.php';
     }
 
     // public function createSanPham(){

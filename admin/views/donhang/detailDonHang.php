@@ -38,15 +38,14 @@
          
         // require_once "views/layouts/header.php";
         // require_once "views/layouts/siderbar.php";
+        
         ?>
 
         <!-- Left Sidebar End -->
         <!-- Vertical Overlay-->
         <div class="vertical-overlay"></div>
 
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
+
         <div class="main-content">
 
             <div class="page-content">
@@ -91,8 +90,9 @@
                             <div class="h-100">
                                 <div class="card">
                                     <div class="card-header align-items-center d-flex">
-                                        <h4 class="card-title mb-0 flex-grow-1">Danh sách đơn hàng</h4>
-                                       <i class="fas fa-globe"></i>Thực phẩm chức năng NUTRI HARMONY
+                                        <h4 class="card-title mb-0 flex-grow-1"> <i class="fas fa-globe"></i>
+                                         Thực phẩm chức năng NUTRI HARMONY</h4>
+                                      
                                        <small class="float-right">Date: <?php formatDate($donhang['ngay_dat'])
                                        ?></small></h4>
                                     </div><!-- end card header -->
@@ -117,10 +117,10 @@
                                         <div class="col-sm-4 invoice-col"> 
                                             Thông tin
                                             
-                                              <b>  Mã đon hàng:<?= $donhang['ma_don_hang'] ?></b><br>
-                                              <b>   Tổng tiền:<?= $donhang['tong_tien']?>
-                                              <b>   Ghi chú:<?= $donhang['ghi_chu']?>
-                                              <b> Phương thức thanh toán:<?= $donhang['ten_phuong_thuc']?>
+                                              <b>  Mã đơn hàng:<?= $donhang['ma_don_hang'] ?></b><br>
+                                              <b>   Tổng tiền:<?= $donhang['tong_tien']?><br>
+                                              <b>   Ghi chú:<?= $donhang['ghi_chu']?><br>
+                                              <b> Phương thức thanh toán:<?= $donhang['ten_phuong_thuc']?><br>
                                             </address>
                                         </div>
 
@@ -136,32 +136,26 @@
                                                             <th scope="col">STT</th>
                                                             <th scope="col">TÊN SẢN PHẨM</th>
                                                             <th scope="col">ĐON GIÁ</th>
-                                                            <th scope="col">SỐ LƯỢNG</th>
-                                                           
+                                                            <th scope="col">SỐ LƯỢNG</th>                                                          
                                                             <th scope="col">THÀNH TIỀN</th>
-                                                           
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <?php $tong_tien = 0;?>
+                                                        <?php $tong_tien = 0;?>                                                   
                                                         <?php
-                                                         foreach ($sanPhamDonHang as $key => $sanPham): ?>
+                                                        
+                                                         foreach ($sanPhamDonHang as $key => $sanpham): ?>
                                                             <tr>
-                                                                <td class="fw-medium"><?= $key + 1 ?></td>
-                                                                <td><?= $sanPham['ten_san_pham'] ?></td>
-                                                                <td><?= $sanPham['don_gia'] ?></td>
-                                                                <td><?= $sanPham['so_dien_thoai'] ?></td>
-                                                                <td><?= $sanPham['thanh_tien'] ?></td>
-                                                                
-                                                               
-                                                                
-
-                                                                                         
-
-                                                            </tr>
-                                                            <?php $tong_tien +=$sanPham['thanh_tien'] ;?>
+                                                                <td><?= $key + 1 ?></td>
+                                                                <td><?= $sanpham['ten_san_pham'] ?></td>
+                                                                <td><?= $sanpham['don_gia'] ?></td>
+                                                                <td><?= $sanpham['so_luong'] ?></td>
+                                                                <td><?= $sanpham['thanh_tien'] ?></td>                                                                                                                
+                                                            </tr
+                                                            <?php $tong_tien += $sanpham['thanh_tien'] ;?>
                                                         <?php endforeach; ?>
-                                                    </tbody>
+
+                                                     </tbody>
                                                     
                                                    
                                                         <!-- </tfoot> -->
@@ -175,16 +169,16 @@
                                             <table class="table">
                                                 <tr>
                                                 <th style="width:50%">Thành tiền</th>
-                                                <td><?= $tong_tien  ?></td>
+                                                <td><?= $tong_tien  ?></td><br>
                                                 </tr>
                                                 <tr>
                                                 <th style="width:50%">Vận chuyển</th>
-                                                <td>10.000</td>
+                                                <td>10000</td><br>
                                                 </tr>
                                                 <tr>
                                                 <th style="width:50%">Tổng tiền</th>
-                                                <td><?= $tong_tien +100000  ?></td>
-                                                </tr>
+                                                <td><?= $tong_tien +10000  ?></td>
+                                                </tr><br>
                                                 
                                             </table>
 

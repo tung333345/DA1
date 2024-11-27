@@ -43,9 +43,9 @@
 
         public function getListSpDonHang($id){
             try {
-             $sql = 'SELECT chi_tiet_don_hangs.* , san_phams.ten_san_pham
+             $sql = 'SELECT chi_tiet_don_hangs.* , sanpham.ten_san_pham
              FROM chi_tiet_don_hangs  
-             INNER JOIN  san_phams ON chi_tiet_don_hangs.san_phams_id = san_phams_id
+            INNER JOIN sanpham ON chi_tiet_don_hangs.don_hang_id = id
              WHERE chi_tiet_don_hangs.don_hang_id = :id';
             
              $stmt=$this->conn->prepare($sql);
