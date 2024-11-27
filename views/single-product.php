@@ -219,6 +219,9 @@
                     <div class="col-md-7">
                         <!--Product Details Content Start-->
                         <div class="product-details-content">
+                            <div class="product-details-content-top">
+                                <h3 style="color: #FFD700;"><?= $danhMuc['ten_danh_muc'] ?></h3>
+                            </div>
                             
                             <h2><?= $sanPham['ten_san_pham'] ?></h2>
                             <div class="single-product-reviews">

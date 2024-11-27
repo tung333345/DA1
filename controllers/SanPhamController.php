@@ -58,6 +58,7 @@ class SanPhamController
     {
         $sanPham = $this->modelSanPham->getSanPhamById($idSanPham);
         $sanPhamLienQuan = $this->modelSanPham->getSanPhamLienQuan($sanPham['id_danh_muc'], $idSanPham);
+        $danhMuc = $this->modelDanhMuc->getDanhMucById($sanPham['id_danh_muc']);
         require_once 'views/single-product.php';
     }
 
