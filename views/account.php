@@ -23,7 +23,7 @@
     <!--Header section start-->
     <div id="main-wrapper">
         <header class="header header-transparent header-sticky">
-            <div class="header-top">
+        <div class="header-top">
                 <div class="container">
                     <div class="row align-items-center">
                         <div
@@ -32,7 +32,8 @@
                             <div class="header-top-links">
                                 <ul>
                                     <li><a href="#"><i class="fa fa-phone"></i>(08) 123 456 7890</a></li>
-                                    <li><a href="#"><i class="fa fa-envelope-open-o"></i>yourmail@domain.com</a></li>
+                                    <li><a href="#"><i class="fa fa-envelope-open-o"></i>tungnxph51891@fpt.edu.vn</a>
+                                    </li>
                                 </ul>
                             </div>
                             <!--Links end-->
@@ -40,14 +41,20 @@
                         <div class="col-xl-6 col-lg-4">
                             <div class="ht-right d-flex justify-content-lg-end justify-content-center">
                                 <ul class="ht-us-menu d-flex">
-                                    <li><a href="#"><i class="fa fa-user-circle"></i>Login</a>
-                                        <ul class="ht-dropdown right">
-                                            <!-- <li><a href="compare.html">Compare Products</a></li> -->
-                                            <li><a href="my-account.html">My Account</a></li>
-                                            <!-- <li><a href="wishlist.html">My Wish List</a></li> -->
-                                            <li><a href="login-register.html">Sign In</a></li>
-                                            <!-- <li><a href="login-register.html">Sign In</a></li> -->
-                                        </ul>
+                                    <li>
+                                    <?php if (isset($_SESSION['user'])): ?>
+                                            <a href="#"><i class="fas fa-user-circle"></i> <?= $_SESSION['user']['ten_dang_nhap'] ?></a>
+                                            <ul class="ht-dropdown right">
+                                                <li><a href="my-account.html">My Account</a></li>
+                                                <li><a href="?act=dang-xuat">Đăng xuất</a></li>
+                                            </ul>
+                                        <?php else: ?>
+                                            <a href="?act=tai-khoan"><i class="fa fa-user-circle"></i>Tài khoản</a>
+                                            <ul class="ht-dropdown right">
+                                                <li><a href="?act=tai-khoan">Đăng nhập</a></li>
+                                                <li><a href="?act=tai-khoan">Đăng ký</a></li>
+                                            </ul>
+                                        <?php endif; ?>
                                     </li>
                                 </ul>
                             </div>

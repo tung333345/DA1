@@ -282,7 +282,7 @@
 
                             </div>
                             <div class="content">
-                                <h2>Member shopping</h2>
+                                <h2>Thành viên mua hàng</h2>
                                 <p>Đảm bảo mua sắm an toàn</p>
                             </div>
                         </div>
