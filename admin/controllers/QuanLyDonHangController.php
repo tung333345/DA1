@@ -27,6 +27,23 @@ class QuanLyDonHangController{
 
         // require_once __DIR__ . '/views/donhang/detailDonHang.php';
     }
+    public function formEditDonHang(){
+        $id = $_GET['id_don_hang'];
+
+        $donhang = $this->modelDonHang-> getDetailDonHang($id);
+        
+        $listTrangThaiDonHang = $this->modelDonHang->getAllTrangThaiDonHang();
+        if($donhang){
+            require_once "./views/donhang/editDonHang.php";
+            deleteSessionError();
+
+        }else{
+            header("location:?act=don-hang");
+            exit();
+        }
+    }
+        // echo "Chi tiết đơn hàng!";
+
 
     // public function createSanPham(){
     //     $listDanhMuc= $this->modelDanhMuc->getAll();

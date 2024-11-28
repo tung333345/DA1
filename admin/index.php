@@ -59,7 +59,6 @@ match ($act) {
      'don-hang'          => (new QuanLyDonHangController())->danhSachDonHang(),
      'form-sua-don-hangs' => (new QuanLyDonHangController())->formEditDonHang(),
      'sua-don-hang'     => (new QuanLyDonHangController())->postEditDonHang(),
-     'xoa-don-hang'      => (new QuanLyDonHangController())->deleteDonHang(),
      'chi-tiet-don-hang' => (new QuanLyDonHangController())->detailDonHang(),
      'chi-tiet-don-hangs' => (new QuanLyDonHangController())->detailDonHang(),
 

@@ -17,6 +17,16 @@
                 echo "lỗi" .$th->getMessage();
             }
         }
+        public function getAlltrangThaiDonHang(){
+            try {
+               $sql = 'SELECT *  FROM trang_thai_don_hangs ';
+               $stmt = $this->conn->prepare($sql);
+               $stmt->execute();
+               return $stmt->fetchAll();
+            } catch (PDOException $th) {
+                echo "lỗi" .$th->getMessage();
+            }}
+        
          // lấy thông tin chi tiết
         public function getDetailDonHang($id){
            try {
