@@ -54,7 +54,7 @@
                                                     <th scope="col">Tên đăng nhập</th>
                                                     <th scope="col">Email</th>
                                                     <th scope="col">Ngày tạo</th>
-                                                    <th scope="col">Hành động</th>
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -65,17 +65,7 @@
                                                             <td><?= htmlspecialchars($khachhang['ten_dang_nhap']) ?></td>
                                                             <td><?= htmlspecialchars($khachhang['email']) ?></td>
                                                             <td><?= htmlspecialchars($khachhang['ngay_tao']) ?></td>
-                                                            <td>
-                                                                <div class="d-flex gap-2">
-                                                                    <a href="?act=chinh-sua-khach-hang&id=<?= $khachhang['ma_nguoi_dung'] ?>" 
-                                                                       class="btn btn-primary btn-sm">Sửa</a>
-                                                                    <form method="post" onsubmit="return confirm('Bạn có muốn xóa khách hàng này không?')" 
-                                                                          action="?act=xoa-khach-hang">
-                                                                        <input type="hidden" name="ma_nguoi_dung" value="<?= $khachhang['ma_nguoi_dung'] ?>">
-                                                                        <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
-                                                                    </form>
-                                                                </div>
-                                                            </td>
+                                                            
                                                         </tr>
                                                     <?php endforeach; ?>
                                                 <?php else: ?>

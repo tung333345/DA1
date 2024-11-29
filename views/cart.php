@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="assets/css/helper.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-    <title>Trang chủ</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <title>Giỏ hàng</title>
 </head>
 
 <body>
@@ -30,7 +32,8 @@
                             <div class="header-top-links">
                                 <ul>
                                     <li><a href="#"><i class="fa fa-phone"></i>(08) 123 456 7890</a></li>
-                                    <li><a href="#"><i class="fa fa-envelope-open-o"></i>yourmail@domain.com</a></li>
+                                    <li><a href="#"><i class="fa fa-envelope-open-o"></i>tungnxph51891@fpt.edu.vn</a>
+                                    </li>
                                 </ul>
                             </div>
                             <!--Links end-->
@@ -38,14 +41,20 @@
                         <div class="col-xl-6 col-lg-4">
                             <div class="ht-right d-flex justify-content-lg-end justify-content-center">
                                 <ul class="ht-us-menu d-flex">
-                                    <li><a href="#"><i class="fa fa-user-circle-o"></i>Login</a>
-                                        <ul class="ht-dropdown right">
-                                            <!-- <li><a href="compare.html">Compare Products</a></li> -->
-                                            <li><a href="my-account.html">My Account</a></li>
-                                            <!-- <li><a href="wishlist.html">My Wish List</a></li> -->
-                                            <li><a href="login-register.html">Sign In</a></li>
-                                            <!-- <li><a href="login-register.html">Sign In</a></li> -->
-                                        </ul>
+                                    <li>
+                                    <?php if (isset($_SESSION['user'])): ?>
+                                            <a href="#"><i class="fa fa-user-circle-o"></i> <?= $_SESSION['user']['ten_dang_nhap'] ?></a>
+                                            <ul class="ht-dropdown right">
+                                                <li><a href="my-account.html">My Account</a></li>
+                                                <li><a href="?act=dang-xuat">Đăng xuất</a></li>
+                                            </ul>
+                                        <?php else: ?>
+                                            <a href="?act=tai-khoan"><i class="fa fa-user-circle-o"></i>Tài khoản</a>
+                                            <ul class="ht-dropdown right">
+                                                <li><a href="?act=tai-khoan">Đăng nhập</a></li>
+                                                <li><a href="?act=tai-khoan">Đăng ký</a></li>
+                                            </ul>
+                                        <?php endif; ?>
                                     </li>
                                 </ul>
                             </div>
@@ -71,10 +80,16 @@
                             class="col-lg-6 col-md-6 col-12 order-lg-2 order-md-2 order-3 d-flex justify-content-center">
                             <nav class="main-menu">
                                 <ul>
-                                    <li><a href="index.html">Home</a>
-                                    </li>
-                                    <li><a href="shop.html">Shop</a>
-                                        <!-- 
+                                    <li><a style="display: inline-block; white-space: nowrap;" href="?act=/">Trang
+                                            chủ</a></li>
+
+
+
+                                    <li><a style="display: inline-block; white-space: nowrap;"
+                                            href="?act=san-pham-theo-danh-muc">Sản phẩm</a></li>
+
+
+                                    <!-- 
                                             <ul class="mega-menu four-column">
                                                 <li><a href="#" class="item-link">Pages</a>
                                                     <ul>
@@ -131,10 +146,12 @@
                                             </ul>
                                          -->
                                     </li>
-                                    <li><a href="blog.html">Blog</a>
+                                    <li><a style="display: inline-block; white-space: nowrap;" href="blog.html">Blog</a>
                                     </li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a style="display: inline-block; white-space: nowrap;" href="about.html">About
+                                            Us</a></li>
+                                    <li><a style="display: inline-block; white-space: nowrap;"
+                                            href="contact.html">Contact Us</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -143,16 +160,16 @@
                         <!--Search Cart Start-->
                         <div class="col-lg-3 col-md-3 col-6 order-lg-3 order-md-3 order-2 d-flex justify-content-end">
                             <div class="header-search">
-                                <button class="header-search-toggle"><i class="fa fa-search"></i></button>
+                               
                                 <div class="header-search-form">
                                     <form action="#">
                                         <input type="text" placeholder="Type and hit enter">
-                                        <button><i class="fa fa-search"></i></button>
+                                        
                                     </form>
                                 </div>
                             </div>
                             <div class="header-cart">
-                                <a href="cart.html"><i class="fa fa-shopping-cart"></i><span>3</span></a>
+                                <a href="?act=gio-hang"><i class="fa fa-shopping-cart"></i><span>3</span></a>
                                 <!--Mini Cart Dropdown Start-->
 
                                 <!--Mini Cart Dropdown End-->
@@ -194,7 +211,6 @@
                 <div class="row">
 
                     <div class="col-12">
-                        <!-- Cart Table -->
                         <div class="cart-table table-responsive mb-30">
                             <table class="table">
                                 <thead>
@@ -208,46 +224,44 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="pro-thumbnail"><a href="#"><img
-                                                    src="assets/images/product/product-1.jpg" alt="Product"></a></td>
-                                        <td class="pro-title"><a href="#">Black Cable Restorer</a></td>
-                                        <td class="pro-price"><span>$25.00</span></td>
-                                        <td class="pro-quantity">
-                                            <div class="pro-qty"><input type="number" value="1"></div>
-                                        </td>
-                                        <td class="pro-subtotal"><span>$25.00</span></td>
-                                        <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="pro-thumbnail"><a href="#"><img
-                                                    src="assets/images/product/product-2.jpg" alt="Product"></a></td>
-                                        <td class="pro-title"><a href="#">Black Die Grinder</a></td>
-                                        <td class="pro-price"><span>$25.00</span></td>
-                                        <td class="pro-quantity">
-                                            <div class="pro-qty"><input type="number" value="1"></div>
-                                        </td>
-                                        <td class="pro-subtotal"><span>$25.00</span></td>
-                                        <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="pro-thumbnail"><a href="#"><img
-                                                    src="assets/images/product/product-3.jpg" alt="Product"></a></td>
-                                        <td class="pro-title"><a href="#">Orange Decker drill</a></td>
-                                        <td class="pro-price"><span>$25.00</span></td>
-                                        <td class="pro-quantity">
-                                            <div class="pro-qty"><input type="number" value="1"></div>
-                                        </td>
-                                        <td class="pro-subtotal"><span>$25.00</span></td>
-                                        <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                    </tr>
+                                    <?php if (!empty($gioHang)): ?>
+                                        <?php foreach ($gioHang as $item): ?>
+                                            <tr>
+                                                <td class="pro-thumbnail"><a href="#"><img src="<?= $item['hinh_anh'] ?>" alt="Product"></a></td>
+                                                <td class="pro-title"><a href="#"><?= $item['ten_san_pham'] ?></a></td>
+                                                <td class="pro-price"><span><?= $item['gia_san_pham'] ?>$</span></td>
+                                                <td class="pro-quantity">
+                                                    <div class="pro-qty">
+                                                        <input type="number" value="<?= $item['so_luong'] ?>" class="quantity-input" disabled>
+                                                    </div>
+                                                </td>
+                                                <td class="pro-subtotal"><span><?= $item['gia_san_pham'] * $item['so_luong'] ?>$</span></td>
+                                                <td class="pro-remove">
+                                                    <a href="?act=remove&id=<?= $item['id_san_pham']?>">Xóa</a>
+                                                        
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <tr>
+                                            <td colspan="6" class="text-center">Giỏ hàng trống</td>
+                                        </tr>
+                                    <?php endif; ?>
                                 </tbody>
                                 <tfoot>
+                                    <?php
+                                    $tongTien = 0;
+                                    if (!empty($gioHang)) {
+                                        foreach ($gioHang as $item) {
+                                            $tongTien += $item['gia_san_pham'] * $item['so_luong'];
+                                        }
+                                    }
+                                    ?>
                                     <tr>
-                                        <td colspan="4" class="text-right" >
+                                        <td colspan="4" class="text-right">
                                             <h4 style="line-height: 45px;">Tổng:</h4>
                                         </td>
-                                        <td class="text-center"><h4 style="line-height: 45px;">$200.000</h4></td>
+                                        <td class="text-center"><h4 style="line-height: 45px;"><?= number_format($tongTien, 2) ?>$</h4></td>
                                         <td class="text-center">
                                             <div class="cart-summary-button">
                                                 <a style="color: #fff;" class="btn" href="checkout.html">Checkout</a>
@@ -257,10 +271,7 @@
                                 </tfoot>
                             </table>
                         </div>
-                        
-
                     </div>
-
                 </div>
             </div>
         </div>

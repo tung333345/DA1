@@ -365,7 +365,7 @@
                                                 <div class="single-product"
                                                     style="border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
                                                     <div class="product-img">
-                                                        <a href="single-product.html">
+                                                        <a href="?act=san-pham-chi-tiet&id_san_pham=<?= $sanPham['id_san_pham'] ?>">
                                                             <img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>"
                                                                 alt="<?= $sanPham['ten_san_pham'] ?>">
                                                         </a>
@@ -378,7 +378,7 @@
                                                     </div>
                                                     <div class="product-content">
                                                         <p class="fw-bold text-center text-uppercase text-success"><a
-                                                                href="single-product.html"><?= $sanPham['ten_san_pham'] ?></a>
+                                                                href="?act=san-pham-chi-tiet&id_san_pham=<?= $sanPham['id_san_pham'] ?>"><?= $sanPham['ten_san_pham'] ?></a>
                                                         </p>
                                                         <h4 class="price">
                                                             <span class="new" style="color: #cea679; font-weight: bold; text-decoration:none">

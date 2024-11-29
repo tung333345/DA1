@@ -220,7 +220,7 @@
                         <!--Product Details Content Start-->
                         <div class="product-details-content">
                             <div class="product-details-content-top">
-                                <h3 style="color: #FFD700;"><?= $danhMuc['ten_danh_muc'] ?></h3>
+                                <h3 style="color: #FFD700;">Danh mục : <?= $danhMuc['ten_danh_muc'] ?></h3>
                             </div>
                             
                             <h2><?= $sanPham['ten_san_pham'] ?></h2>
@@ -242,12 +242,13 @@
                             </div>
                           
                             <div class="single-product-quantity">
-                                <form class="add-quantity" action="#">
+                                <form class="add-quantity" action="?act=add-to-cart" method="POST">
                                     <div class="product-quantity">
-                                        <input value="1" type="number">
+                                        <input name="quantity" value="1" type="number">
                                     </div>
+                                    <input type="hidden" name="product_id" value="<?= $sanPham['id_san_pham'] ?>">
                                     <div class="add-to-link">
-                                        <button class="product-add-btn" data-text="add to cart">add to cart</button>
+                                        <button type="submit" class="product-add-btn" data-text="add to cart">Thêm vào giỏ hàng</button>
                                     </div>
                                 </form>
                             </div>
@@ -375,18 +376,18 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-product">
                             <div class="product-img">
-                                <a href="?act=chi-tiet-san-pham&id=<?= $sp['id_san_pham'] ?>">
+                                <a href="?act=san-pham-chi-tiet&id_san_pham=<?= $sanPham['id_san_pham'] ?>">
                                     <img src="<?= $sp['hinh_anh'] ?>" alt="<?= $sp['ten_san_pham'] ?>">
                                 </a>
                             </div>
                             <div class="product-content">
-                                <h3><a href="?act=chi-tiet-san-pham&id=<?= $sp['id_san_pham'] ?>"><?= $sp['ten_san_pham'] ?></a></h3>
+                                <h3><a href="?act=san-pham-chi-tiet&id_san_pham=<?= $sanPham['id_san_pham'] ?>"><?= $sp['ten_san_pham'] ?></a></h3>
                                 <div class="product-price">
                                     <?php if ($sp['gia_khuyen_mai'] > 0): ?>
-                                    <span class="new-price"><?= $sp['gia_khuyen_mai'] ?>$</span>
-                                    <span class="old-price"><?= $sp['gia_san_pham'] ?>$</span>
+                                    <span class="new-price"  style="color: #cea679; font-weight: bold; text-decoration: none;" ><?= $sp['gia_khuyen_mai'] ?>$</span>
+                                    <span class="old-price"  style="text-decoration: line-through; color: #gray; ; font-weight: bold;" ><?= $sp['gia_san_pham'] ?>$</span>
                                     <?php else: ?>
-                                    <span class="new-price"><?= $sp['gia_san_pham'] ?>$</span>
+                                    <span class="new-price" style="color:#cea679; font-weight: bold;" ><?= $sp['gia_san_pham'] ?>$</span>
                                     <?php endif; ?>
                                 </div>
                             </div>

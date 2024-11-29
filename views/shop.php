@@ -300,7 +300,7 @@
                                                             <div class="single-product"
                                                                 style="border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
                                                                 <div class="product-img">
-                                                                    <a href="single-product.html">
+                                                                    <a href="?act=san-pham-chi-tiet&id_san_pham=<?= $sanPham['id_san_pham'] ?>">
                                                                         <img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>"
                                                                             alt="<?= $sanPham['ten_san_pham'] ?>">
                                                                     </a>
@@ -313,7 +313,7 @@
                                                                 </div>
                                                                 <div class="product-content">
                                                                     <p class=""><a
-                                                                            href="single-product.html"><?= $sanPham['ten_san_pham'] ?></a>
+                                                                            href="?act=san-pham-chi-tiet&id_san_pham=<?= $sanPham['id_san_pham'] ?>"><?= $sanPham['ten_san_pham'] ?></a>
                                                                     </p>
                                                                     <h4 class="price">
                                                                         <?php if (!empty($sanPham['gia_khuyen_mai'])): ?>
@@ -327,7 +327,7 @@
                                                                             </span>
                                                                         <?php else: ?>
                                                                             <span class="old"
-                                                                                style="color: #000; font-weight: bold;">
+                                                                                style="color:#cea679; font-weight: bold;">
                                                                                 <?= $sanPham['gia_san_pham'] ?>$
                                                                             </span>
                                                                         <?php endif; ?>
