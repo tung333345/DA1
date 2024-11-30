@@ -4,10 +4,12 @@ class SanPhamController
 {
     public $modelSanPham;
     public $modelDanhMuc;
+    public $modelGioHang;
     public function __construct()
     {
         $this->modelSanPham = new SanPhamModel();
         $this->modelDanhMuc = new DanhMucModel();
+        $this->modelGioHang = new GioHangModel();
     }
 
     public function sanPhamTheoDanhMuc($idDanhMuc = null)
@@ -33,6 +35,11 @@ class SanPhamController
 
         $currentProducts = $this->modelSanPham->getSanPhamByDanhMucWithPagination($idDanhMuc, $productsPerPage, $startIndex);
         $danhMuc = $this->modelDanhMuc->getDanhMucById($idDanhMuc);
+       
+
+
+        
+        
 
         // Gửi dữ liệu sang view
         require_once 'views/shop.php';
