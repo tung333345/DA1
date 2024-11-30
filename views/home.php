@@ -42,15 +42,15 @@
                                 <ul class="ht-us-menu d-flex">
                                     <li>
                                     <?php if (isset($_SESSION['user'])): ?>
-                                            <a href="#"><i class="fa fa-user-circle-o"></i> <?= $_SESSION['user']['ten_dang_nhap'] ?></a>
+                                            <a href="#"><i class="fa fa-user-circle"></i> <?= $_SESSION['user']['ten_dang_nhap'] ?></a>
                                             <ul class="ht-dropdown right">
                                                 <li><a href="my-account.html">My Account</a></li>
                                                 <li><a href="?act=dang-xuat">Đăng xuất</a></li>
                                             </ul>
                                         <?php else: ?>
-                                            <a href="?act=tai-khoan"><i class="fa fa-user-circle-o"></i>Tài khoản</a>
+                                            <a href="?act=tai-khoan"><i class="fa fa-user-circle"></i>Tài khoản</a>
                                             <ul class="ht-dropdown right">
-                                                <li><a href="?act=tai-khoan">Đăng nhập</a></li>
+                                                <li><a href="?act=tai-khoan">My Account</a></li>
                                                 <li><a href="?act=tai-khoan">Đăng ký</a></li>
                                             </ul>
                                         <?php endif; ?>

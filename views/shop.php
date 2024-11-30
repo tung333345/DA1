@@ -42,7 +42,7 @@
                                 <ul class="ht-us-menu d-flex">
                                     <li>
                                     <?php if (isset($_SESSION['user'])): ?>
-                                            <a href="#"><i class="fa fa-user-circle-o"></i> <?= $_SESSION['user']['ten_dang_nhap'] ?></a>
+                                            <a href="#"><i class="fa fa-user-circle"></i> <?= $_SESSION['user']['ten_dang_nhap'] ?></a>
                                             <ul class="ht-dropdown right">
                                                 <li><a href="my-account.html">My Account</a></li>
                                                 <li><a href="?act=dang-xuat">Đăng xuất</a></li>
@@ -305,9 +305,9 @@
                                                                             alt="<?= $sanPham['ten_san_pham'] ?>">
                                                                     </a>
                                                                     <div class="product-action"
-                                                                        style="display: flex; align-items: center; justify-content: center; padding: 4px; background-color: #f8f8f8; border-radius: 5px;">
-                                                                        <a class="product-btn" href="#"
-                                                                            style="background-color: #ff6f61; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: block; width: auto; text-align: center;">Thêm
+                                                                        style="display: flex; align-items: center; justify-content: center; padding: 2px; background-color: #f8f8f8; border-radius: 5px;">
+                                                                        <a class="product-btn" href="?act=add-to-cart&id_san_pham=<?= $sanPham['id_san_pham'] ?>&so_luong=1"
+                                                                            style="background-color: #ff6f61; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none; display: block; width: auto; text-align: center; font-size: 14px;">Thêm
                                                                             vào giỏ</a>
                                                                     </div>
                                                                 </div>
