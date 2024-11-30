@@ -45,4 +45,5 @@ match ($act) {
     'gio-hang' => (new GioHangController())->index(),
     'add-to-cart' => (new GioHangController())->add(),
     'remove' => (new GioHangController())->remove(),
+    'update-cart' => (new GioHangController())->updateCartQuantity(),
 };

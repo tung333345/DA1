@@ -44,5 +44,34 @@ class GioHangController {
         header('Location: ?act=gio-hang');
         exit();
     }
+    public function updateCartQuantity() {
+        if (!isset($_SESSION['user'])) {
+            header('Location: ?act=tai-khoan');
+            exit();
+        }
+    
+        $userId = $_SESSION['user'];
+        $idSanPham = $_POST['idSanPham'] ?? null;
+        $soLuong = $_POST['soLuong'] ?? null;
+    
+        if ($idSanPham && $soLuong) {
+            // Lấy số lượng tồn kho từ model
+            $soLuongTon = $this->gioHangModel->getSoLuongTon($idSanPham);
+    
+            // Kiểm tra số lượng nhập vào
+            if ($soLuong > $soLuongTon) {
+                $_SESSION['error'] = 'Số lượng vượt quá tồn kho!';
+                header('Location: ?act=gio-hang');
+                exit();
+            }
+    
+            // Cập nhật số lượng trong giỏ hàng
+            $this->gioHangModel->updateSoLuongSanPham($userId, $idSanPham, $soLuong);
+        }
+    
+        header('Location: ?act=gio-hang');
+        exit();
+    }
+    
 }
 ?>

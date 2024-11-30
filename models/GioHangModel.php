@@ -56,5 +56,31 @@ class GioHangModel{
         $stmt->execute();
         return $this->conn->lastInsertId();
     }
+    public function getSoLuongTon($idSanPham) {
+        $sql = "SELECT so_luong FROM sanpham WHERE id_san_pham = :idSanPham";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':idSanPham', $idSanPham, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        return $result['so_luong'] ?? 0;
+    }
+    public function updateSoLuongSanPham($userId, $idSanPham, $soLuong) {
+        $gioHangId = $this->getGioHangIdByUserId($userId);
+    
+        if ($gioHangId) {
+            $sql = "UPDATE chi_tiet_gio_hang 
+                    SET so_luong = :soLuong 
+                    WHERE id_gio_hang = :gioHangId AND id_san_pham = :idSanPham";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':gioHangId', $gioHangId, PDO::PARAM_INT);
+            $stmt->bindParam(':idSanPham', $idSanPham, PDO::PARAM_INT);
+            $stmt->bindParam(':soLuong', $soLuong, PDO::PARAM_INT);
+            $stmt->execute();
+        }
+    }
+    
+    
+    
 }
 ?>
