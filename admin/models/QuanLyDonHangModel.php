@@ -67,55 +67,35 @@
             }
              
          }
-        // public function postData($ten_danh_muc,$trang_thai){
-        //     try {
-        //         $sql = "insert into danhmuc (ten,trang_thai)
-        //                 values (:ten_danh_muc , :trang_thai)";
-        //         $stmt = $this->conn->prepare($sql);
-        //         $stmt->bindParam(':ten_danh_muc',$ten_danh_muc);
-        //         $stmt->bindParam(':trang_thai',$trang_thai);
-        //         $stmt->execute();
-        //         return true;
-        //      } catch (PDOException $th) {
-        //          echo "lỗi" .$th->getMessage();
-        //      }
-        // }
-        // public function deleteData($id){
-        //     $sql="delete from danhmuc where id=:id";
-        //     $stmt=$this->conn->prepare($sql);
-        //     $stmt->bindParam(':id',$id);
-        //     $stmt->execute();
-        //     return true;
-            
-        // }
-        // // lấy thông tin chi tiết
-        // public function getDetailData($id){
-        //    try {
-        //     $sql="  select * from danhmuc where id=:id";
-        //     $stmt=$this->conn->prepare($sql);
-        //     $stmt->bindParam(':id',$id);
-        //     $stmt->execute();
-        //     return $stmt->fetch();
-        //    } catch (PDOException $th) {
-        //     echo "lỗi" .$th->getMessage();
-        //    }
-            
-        // }
+    
 
-        // public function updateData($id,$ten_danh_muc,$trang_thai){
-        //     try {
-        //         $sql = "UPDATE danhmuc set ten=:ten_danh_muc , trang_thai=:trang_thai where id=:id";
-        //         $stmt = $this->conn->prepare($sql);
-        //         $stmt->bindParam(':ten_danh_muc',$ten_danh_muc);
-        //         $stmt->bindParam(':trang_thai',$trang_thai);
-        //         $stmt->bindParam(':id',$id);
-        //         $stmt->execute();
-        //         return true;
-        //      } catch (PDOException $th) {
-        //          echo "lỗi" .$th->getMessage();
-        //      }
-        // }
-        // // húy kết nối csdl
+        public function updateDonHang($id,$ten_nguoi_nhan,$sdt_nguoi_nhan,$email_nguoi_nhan,$dia_chi_nguoi_nhan,$ghi_chu,$trang_thai_id){
+            try {
+                $sql = "UPDATE don_hangs set
+                 ten_nguoi_nhan=:ten_nguoi_nhan ,
+                 sdt_nguoi_nhan=:sdt_nguoi_nhan ,
+                email_nguoi_nhan=:email_nguoi_nhan ,
+                dia_chi_nguoi_nhan=:dia_chi_nguoi_nhan ,
+                ghi_chu=:ghi_chu ,
+                trang_thai_id=:trang_thai_id ,
+
+                 where id=:id";
+                $stmt = $this->conn->prepare($sql);
+                var_dump($stmt);die;
+                $stmt->bindParam(':ten_nguoi_nhan',$ten_nguoi_nhan);
+                $stmt->bindParam(':sdt_nguoi_nhan',$sdt_nguoi_nhan);
+                $stmt->bindParam(':email_nguoi_nhan',$email_nguoi_nhan);
+                $stmt->bindParam(':dia_chi_nguoi_nhan',$dia_chi_nguoi_nhan);
+                $stmt->bindParam(':ghi_chu',$ghi_chu);
+                $stmt->bindParam(':id',$trang_thai_id);
+               
+                $stmt->execute();
+                return true;
+             } catch (PDOException $th) {
+                 echo "lỗi" .$th->getMessage();
+             }
+        }
+        // húy kết nối csdl
         // function __destruct(){
         //     $this->conn=null;
         // }

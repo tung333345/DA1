@@ -49,7 +49,7 @@
                         <div class="col-12">
                             <div
                                 class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                                <h4 class="mb-sm-0">Cập nhật thông tin đơn hàng: <?= $donhang['ma_don_hang']?></h4>
+                                <h4 class="mb-sm-0">Thông tin đơn hàng: <?= $donhang['ma_don_hang']?></h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
@@ -68,41 +68,81 @@
                             <div class="h-100">
                             <div class="card">
                                 <div class="card-header align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">Cập nhật đơn hàng</h4>
+                                    <h4 class="card-title mb-0 flex-grow-1">Cập nhật thông tin đơn hàng: <?= $donhang['ma_don_hang']?></h4>
                                     
                                 </div><!-- end card header -->
 
                                 <div class="card-body">
                                    
                                     <div class="live-preview">
-                                        <form action="?act=sua-danh-muc" method="post" enctype="multipart/form-data" >
-                                            <input type="hidden" name="id_danh_muc" value="<?= $donhang['id'] ?>" >
+                                        <form action="?act=sua-don-hang" method="post" enctype="multipart/form-data" >
+                                            <input type="hidden" name="don_hang_id" value="<?= $donhang['id'] ?>" >
                                             <div class="row">
                                                
                                                 <!--end col-->
                                                 <div class="col-md-6">
-                                                    <div class="mb-3">Tên đơn hàng
+                                                    <div class="mb-3">Tên người nhận
                                                         <label for="citynameInput" class="form-label"></label>
-                                                        <input type="text" class="form-control" placeholder="Nhập tên danh mục" name="ten_danh_muc" value="<?= $danhmuc['ten_danh_muc'] ?>" >
+                                                        <input type="text" class="form-control" placeholder="Nhập tên danh mục" name="ten_nguoi_nhan" value="<?= $donhang['ten_nguoi_nhan'] ?>" >
                                                         <span class="text-danger" >
-                                                        <?= !empty($_SESSION['errors']['ten_danh_muc'])? $_SESSION['errors']['ten_danh_muc'] :'' ?>
+                                                        <?= !empty($_SESSION['errors']['ten_nguoi_nhan'])? $_SESSION['errors']['ten_nguoi_nhan'] :'' ?>
+                                                        </span>
+                                                    </div>
+                                                    <div class="mb-3">Số điện thoại
+                                                        <label for="citynameInput" class="form-label"></label>
+                                                        <input type="text" class="form-control" placeholder="Nhập tên danh mục" name="sdt_nguoi_nhan" value="<?= $donhang['sdt_nguoi_nhan'] ?>" >
+                                                        <span class="text-danger" >
+                                                        <?= !empty($_SESSION['errors']['sdt_nguoi_nhan'])? $_SESSION['errors']['sdt_nguoi_nhan'] :'' ?>
+                                                        </span>
+                                                    </div>
+                                                    <div class="mb-3">Email
+                                                        <label for="citynameInput" class="form-label"></label>
+                                                        <input type="email" class="form-control" placeholder="Nhập tên danh mục" name="email_nguoi_nhan" value="<?= $donhang['email_nguoi_nhan'] ?>" >
+                                                        <span class="text-danger" >
+                                                        <?= !empty($_SESSION['errors']['email_nguoi_nhan'])? $_SESSION['errors']['email_nguoi_nhan'] :'' ?>
+                                                        </span>
+                                                    </div>
+                                                    <div class="mb-3">Địa chỉ
+                                                        <label for="citynameInput" class="form-label"></label>
+                                                        <input type="text" class="form-control" placeholder="Nhập tên danh mục" name="dia_chi_nguoi_nhan" value="<?= $donhang['dia_chi_nguoi_nhan'] ?>" >
+                                                        <span class="text-danger" >
+                                                        <?= !empty($_SESSION['errors']['dia_chi_nguoi_nhan'])? $_SESSION['errors']['dia_chi_nguoi_nhan'] :'' ?>
+                                                        </span>
+                                                    </div>
+                                                    <div class="mb-3">Ghi chú
+                                                        <label for="citynameInput" class="form-label"></label>
+                                                        <input type="text" class="form-control" placeholder="Nhập tên danh mục" name="ghi_chu" value="<?= $donhang['ghi_chu'] ?>" >
+                                                        <span class="text-danger" >
+                                                        <?= !empty($_SESSION['errors']['ghi_chu'])? $_SESSION['errors']['ghi_chu'] :'' ?>
                                                         </span>
                                                     </div>
                                                 </div>
                                                 <!--end col-->
                                                 <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="ForminputState" class="form-label">trạng thái</label>
-                                                        <select class="form-select" name="trang_thai" >
-                                                            <option selected disabled >Chọn trạng thái</option>
-                                                            <option value="1" <?= $danhmuc['trang_thai']==1 ? "selected" : '' ?> >Hiển thị</option>
-                                                            <option value="2" <?= $danhmuc['trang_thai']==2 ? "selected" : '' ?> >Không hiển thị</option>
-                                                        </select>
-                                                        <span class="text-danger" >
-                                                        <?= !empty($_SESSION['errors']['trang_thai'])? $_SESSION['errors']['trang_thai'] :'' ?>
-                                                        </span>
-                                                    </div>
+                                                    
                                                 </div>
+                                                <div class="col-md-6">
+                                                        <label for="id_danh_muc" class="form-label">Trạng thái đơn hàng</label>
+                                                        <select class="form-control" name="trang_thai_id">
+                                                            <?php foreach ($listTrangThaiDonHang as $trangthai): ?>
+                                                                <option
+                                                                <?php
+                                                                if($donhang['trang_thai_id'] > $trangthai['id']
+                                                                || $donhang['trang_thai_id'] ==8
+                                                                || $donhang['trang_thai_id'] ==11
+
+
+                                                                ){
+                                                                  echo 'disabled' ;
+                                                                } 
+                                                                ?>
+
+                                                                 value="<?= $trangthai['id'] ?>" 
+                                                                 <?= $trangthai['id'] == $donhang['trang_thai_id'] ? 'selected' : '' ?>>
+                                                                    <?= $trangthai['ten_trang_thai'] ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select>
+                                                    </div>
                                                 <!--end col-->
                                                 <div class="col-lg-12">
                                                     <div class="text-end">

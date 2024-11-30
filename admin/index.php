@@ -41,6 +41,8 @@ match ($act) {
     'form-sua-quan-tri' => (new TaiKhoanController())->formEditQuanTri(),
     'sua-quan-tri' => (new TaiKhoanController())->postEditQuanTri(),
     'xoa-quan-tri' => (new TaiKhoanController())->deleteQuanTri(),
+    // tài khoản khách hàng
+    'list-tai-khoan-khach-hang' => (new TaiKhoanController())->danhsachKhachHang(),
     // quản lý danh mục sản phẩm
     'danh-mucs'         => (new DanhMucController())->index(),
     'form-add-danh-muc' => (new DanhMucController())->create(),

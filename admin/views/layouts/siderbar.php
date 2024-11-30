@@ -96,7 +96,7 @@
                                 <a class="nav-link" href="?act=list-tai-khoan-quan-tri">Tài Khoản Quản Trị Viên</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#list-tai-khoan-quan-tri">Tài Khoản Khách Hàng</a>
+                                <a class="nav-link" href="?act=list-tai-khoan-khach-hang">Tài Khoản Khách Hàng</a>
                             </li>
                             </li>
                             <!-- <li class="nav-item">
