@@ -17,11 +17,13 @@ require_once './models/User.php';
 // Require toàn bộ file Controllers
 require_once './controllers/HomeController.php';
 require_once './controllers/SanPhamController.php';
+require_once './controllers/GioHangController.php';
 
 // Require toàn bộ file Models
 require_once './models/HomeModel.php';
 require_once './models/SanPhamModel.php';
 require_once './models/DanhMucModel.php';
+require_once './models/GioHangModel.php';
 
 
 
@@ -40,4 +42,7 @@ match ($act) {
     'san-pham-theo-danh-muc' => (new SanPhamController())->sanPhamTheoDanhMuc($_GET['id_danh_muc'] ?? null),
     'san-pham-theo-gia' => (new SanPhamController())->sanPhamTheoGia($_GET['min_price'] ?? null, $_GET['max_price'] ?? null),
     'san-pham-chi-tiet' => (new SanPhamController())->sanPhamChiTiet($_GET['id_san_pham'] ?? null),
+    'gio-hang' => (new GioHangController())->index(),
+    'add-to-cart' => (new GioHangController())->add(),
+    'remove' => (new GioHangController())->remove(),
 };
