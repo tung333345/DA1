@@ -71,23 +71,26 @@
 
         public function updateDonHang($id,$ten_nguoi_nhan,$sdt_nguoi_nhan,$email_nguoi_nhan,$dia_chi_nguoi_nhan,$ghi_chu,$trang_thai_id){
             try {
-                $sql = "UPDATE don_hangs set
+                // var_dump($id);die;
+                $sql = "UPDATE don_hangs SET
                  ten_nguoi_nhan=:ten_nguoi_nhan ,
                  sdt_nguoi_nhan=:sdt_nguoi_nhan ,
                 email_nguoi_nhan=:email_nguoi_nhan ,
                 dia_chi_nguoi_nhan=:dia_chi_nguoi_nhan ,
                 ghi_chu=:ghi_chu ,
-                trang_thai_id=:trang_thai_id ,
+                trang_thai_id=:trang_thai_id 
 
-                 where id=:id";
+                 WHERE id=:id";
                 $stmt = $this->conn->prepare($sql);
-                var_dump($stmt);die;
+                // var_dump($stmt);die;
                 $stmt->bindParam(':ten_nguoi_nhan',$ten_nguoi_nhan);
                 $stmt->bindParam(':sdt_nguoi_nhan',$sdt_nguoi_nhan);
                 $stmt->bindParam(':email_nguoi_nhan',$email_nguoi_nhan);
                 $stmt->bindParam(':dia_chi_nguoi_nhan',$dia_chi_nguoi_nhan);
                 $stmt->bindParam(':ghi_chu',$ghi_chu);
-                $stmt->bindParam(':id',$trang_thai_id);
+                    $stmt->bindParam(':trang_thai_id', $trang_thai_id);
+
+                $stmt->bindParam(':id',$id);
                
                 $stmt->execute();
                 return true;

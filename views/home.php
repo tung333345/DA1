@@ -41,11 +41,13 @@
                             <div class="ht-right d-flex justify-content-lg-end justify-content-center">
                                 <ul class="ht-us-menu d-flex">
                                     <li>
-                                    <?php if (isset($_SESSION['user'])): ?>
-                                            <a href="#"><i class="fa fa-user-circle"></i> <?= $_SESSION['user']['ten_dang_nhap'] ?></a>
+                                        <?php if (isset($_SESSION['user'])): ?>
+                                            <a href="#"><i class="fa fa-user-circle"></i>
+                                                <?= $_SESSION['user']['ten_dang_nhap'] ?></a>
                                             <ul class="ht-dropdown right">
                                                 <li><a href="my-account.html">My Account</a></li>
                                                 <li><a href="?act=dang-xuat">Đăng xuất</a></li>
+                                                <li><a href="?act=lich-su-mua-hang">Đơn Hàng</a></li>
                                             </ul>
                                         <?php else: ?>
                                             <a href="?act=tai-khoan"><i class="fa fa-user-circle"></i>Tài khoản</a>
@@ -327,9 +329,14 @@
                                                         </a>
                                                         <div class="product-action"
                                                             style="display: flex; align-items: center; justify-content: center; padding: 4px; background-color: #f8f8f8; border-radius: 5px;">
-                                                            <a class="product-btn" href="#"
-                                                                style="background-color: #ff6f61; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: block; width: auto; text-align: center;">Thêm
-                                                                vào giỏ</a>
+                                                            <form action="?act=add-to-cart" method="post">
+                                                                <input type="hidden" name="product_id"
+                                                                    value="<?= $sanPham['id_san_pham'] ?>">
+                                                                <input type="hidden" name="quantity" value="1">
+                                                                <button type="submit" class="product-btn"
+                                                                    style="background-color: #ff6f61; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none; display: block; width: auto; text-align: center; font-size: 14px;">Thêm
+                                                                    vào giỏ</button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                     <div class="product-content">
@@ -365,15 +372,21 @@
                                                 <div class="single-product"
                                                     style="border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
                                                     <div class="product-img">
-                                                        <a href="?act=san-pham-chi-tiet&id_san_pham=<?= $sanPham['id_san_pham'] ?>">
+                                                        <a
+                                                            href="?act=san-pham-chi-tiet&id_san_pham=<?= $sanPham['id_san_pham'] ?>">
                                                             <img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>"
                                                                 alt="<?= $sanPham['ten_san_pham'] ?>">
                                                         </a>
                                                         <div class="product-action"
                                                             style="display: flex; align-items: center; justify-content: center; padding: 4px; background-color: #f8f8f8; border-radius: 5px;">
-                                                            <a class="product-btn" href="#"
-                                                                style="background-color: #ff6f61; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: block; width: auto; text-align: center;">Thêm
-                                                                vào giỏ</a>
+                                                            <form action="?act=add-to-cart" method="post">
+                                                                <input type="hidden" name="product_id"
+                                                                    value="<?= $sanPham['id_san_pham'] ?>">
+                                                                <input type="hidden" name="quantity" value="1">
+                                                                <button type="submit" class="product-btn"
+                                                                    style="background-color: #ff6f61; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none; display: block; width: auto; text-align: center; font-size: 14px;">Thêm
+                                                                    vào giỏ</button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                     <div class="product-content">
@@ -381,7 +394,8 @@
                                                                 href="?act=san-pham-chi-tiet&id_san_pham=<?= $sanPham['id_san_pham'] ?>"><?= $sanPham['ten_san_pham'] ?></a>
                                                         </p>
                                                         <h4 class="price">
-                                                            <span class="new" style="color: #cea679; font-weight: bold; text-decoration:none">
+                                                            <span class="new"
+                                                                style="color: #cea679; font-weight: bold; text-decoration:none">
                                                                 <?= $sanPham['gia_san_pham'] ?>$
                                                             </span>
                                                         </h4>
@@ -442,7 +456,7 @@
     </div>
     <!--Banner section end-->
 
-   
+
 
 
 

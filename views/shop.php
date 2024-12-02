@@ -306,9 +306,12 @@
                                                                     </a>
                                                                     <div class="product-action"
                                                                         style="display: flex; align-items: center; justify-content: center; padding: 2px; background-color: #f8f8f8; border-radius: 5px;">
-                                                                        <a class="product-btn" href="?act=add-to-cart&id_san_pham=<?= $sanPham['id_san_pham'] ?>&so_luong=1"
-                                                                            style="background-color: #ff6f61; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none; display: block; width: auto; text-align: center; font-size: 14px;">Thêm
-                                                                            vào giỏ</a>
+                                                                        <form action="?act=add-to-cart" method="post">
+                                                                            <input type="hidden" name="product_id" value="<?= $sanPham['id_san_pham'] ?>">
+                                                                            <input type="hidden" name="quantity" value="1">
+                                                                            <button type="submit" class="product-btn" 
+                                                                                style="background-color: #ff6f61; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none; display: block; width: auto; text-align: center; font-size: 14px;">Thêm vào giỏ</button>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-content">

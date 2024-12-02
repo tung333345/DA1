@@ -13,6 +13,8 @@ require_once './controllers/UserController.php';
 /* ---------------------------------- MODEL --------------------------------- */
 require_once './models/User.php';
 /* ---------------------------------- MODEL --------------------------------- */
+//donhang
+require_once './controllers/LichSuController.php';
 
 // Require toàn bộ file Controllers
 require_once './controllers/HomeController.php';
@@ -25,7 +27,8 @@ require_once './models/SanPhamModel.php';
 require_once './models/DanhMucModel.php';
 require_once './models/GioHangModel.php';
 
-
+//donhang
+require_once './models/LichSuModel.php';
 
 /* --------------------------------- ROUTER --------------------------------- */
 $act = $_GET['act'] ?? '/';
@@ -46,4 +49,11 @@ match ($act) {
     'add-to-cart' => (new GioHangController())->add(),
     'remove' => (new GioHangController())->remove(),
     'update-cart' => (new GioHangController())->updateCartQuantity(),
+
+    //donhang
+    'lich-su-mua-hang' => (new LichSuController())->lichSuMuaHang(),
+    'chi-tiet-mua-hang' => (new LichSuController())->chiTietMuaHang(),
+    'huy-don-hang' => (new LichSuController())->huyDonHang(),
+    
+
 };
