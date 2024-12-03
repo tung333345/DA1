@@ -1,10 +1,13 @@
 <?php
-class GioHangModel{
+class GioHangModel
+{
     public $conn;
-    public function __construct(){
+    public function __construct()
+    {
         $this->conn = connectDB();
     }
-    public function getGioHangByUserId($userId) {
+    public function getGioHangByUserId($userId)
+    {
         $sql = "SELECT sp.id_san_pham, sp.ten_san_pham, sp.gia_san_pham, sp.hinh_anh, ctgh.so_luong
                 FROM chi_tiet_gio_hang ctgh
                 JOIN sanpham sp ON ctgh.id_san_pham = sp.id_san_pham
@@ -15,7 +18,8 @@ class GioHangModel{
         $stmt->execute();
         return $stmt->fetchAll();
     }
-    public function addToCart($userId, $idSanPham, $quantity) {
+    public function addToCart($userId, $idSanPham, $quantity)
+    {
         // Kiểm tra giỏ hàng của người dùng
         $gioHangId = $this->getGioHangIdByUserId($userId);
         if (!$gioHangId) {
@@ -32,7 +36,8 @@ class GioHangModel{
         $stmt->bindParam(':quantity', $quantity, PDO::PARAM_INT);
         $stmt->execute();
     }
-    public function removeFromCart($userId, $idSanPham) {
+    public function removeFromCart($userId, $idSanPham)
+    {
         $gioHangId = $this->getGioHangIdByUserId($userId);
         if ($gioHangId) {
             $sql = "DELETE FROM chi_tiet_gio_hang WHERE id_gio_hang = :gioHangId AND id_san_pham = :idSanPham";
@@ -42,32 +47,36 @@ class GioHangModel{
             $stmt->execute();
         }
     }
-    private function getGioHangIdByUserId($userId) {
+    private function getGioHangIdByUserId($userId)
+    {
         $sql = "SELECT id_gio_hang FROM giohang WHERE id_nguoi_dung = :userId";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchColumn();
     }
-    private function createGioHang($userId) {
+    private function createGioHang($userId)
+    {
         $sql = "INSERT INTO giohang (id_nguoi_dung) VALUES (:userId)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute();
         return $this->conn->lastInsertId();
     }
-    public function getSoLuongTon($idSanPham) {
+    public function getSoLuongTon($idSanPham)
+    {
         $sql = "SELECT so_luong FROM sanpham WHERE id_san_pham = :idSanPham";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':idSanPham', $idSanPham, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
         return $result['so_luong'] ?? 0;
     }
-    public function updateSoLuongSanPham($userId, $idSanPham, $soLuong) {
+    public function updateSoLuongSanPham($userId, $idSanPham, $soLuong)
+    {
         $gioHangId = $this->getGioHangIdByUserId($userId);
-    
+
         if ($gioHangId) {
             $sql = "UPDATE chi_tiet_gio_hang 
                     SET so_luong = :soLuong 
@@ -79,8 +88,74 @@ class GioHangModel{
             $stmt->execute();
         }
     }
-    
-    
-    
+    public function createOrder($userId, $name, $email, $phone, $address, $total, $paymentMethod, $trangThaiId, $ghiChu = null)
+    {
+        try {
+            // Tạo mã đơn hàng (ví dụ sử dụng timestamp)
+            $orderCode = 'DH' . time();
+
+            // Câu lệnh SQL để chèn dữ liệu vào bảng `don_hangs`
+            $sql = "INSERT INTO don_hangs (
+                        ma_don_hang, 
+                        tai_khoan_id, 
+                        ten_nguoi_nhan, 
+                        email_nguoi_nhan, 
+                        sdt_nguoi_nhan, 
+                        dia_chi_nguoi_nhan, 
+                        ngay_dat, 
+                        tong_tien, 
+                        phuong_thuc_thanh_toan_id, 
+                        trang_thai_id, 
+                        ghi_chu
+                    ) VALUES (
+                        :ma_don_hang, 
+                        :tai_khoan_id, 
+                        :ten_nguoi_nhan, 
+                        :email_nguoi_nhan, 
+                        :sdt_nguoi_nhan, 
+                        :dia_chi_nguoi_nhan, 
+                        NOW(), 
+                        :tong_tien, 
+                        :phuong_thuc_thanh_toan, 
+                        :trang_thai_id, 
+                        :ghi_chu
+                    )";
+
+            // Chuẩn bị câu lệnh SQL
+            $stmt = $this->conn->prepare($sql);
+
+            // Gán giá trị cho các tham số
+            $stmt->bindParam(':ma_don_hang', $orderCode, PDO::PARAM_STR);
+            $stmt->bindParam(':tai_khoan_id', $userId, PDO::PARAM_INT);
+            $stmt->bindParam(':ten_nguoi_nhan', $name, PDO::PARAM_STR);
+            $stmt->bindParam(':email_nguoi_nhan', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':sdt_nguoi_nhan', $phone, PDO::PARAM_STR);
+            $stmt->bindParam(':dia_chi_nguoi_nhan', $address, PDO::PARAM_STR);
+            $stmt->bindParam(':tong_tien', $total, PDO::PARAM_STR);
+            $stmt->bindParam(':phuong_thuc_thanh_toan', $paymentMethod, PDO::PARAM_INT);
+            $stmt->bindParam(':trang_thai_id', $trangThaiId, PDO::PARAM_INT);
+
+            // Gán giá trị cho trường ghi chú (nếu có)
+            if ($ghiChu !== null) {
+                $stmt->bindParam(':ghi_chu', $ghiChu, PDO::PARAM_STR);
+            } else {
+                $stmt->bindValue(':ghi_chu', null, PDO::PARAM_NULL);
+            }
+
+            // Thực thi câu lệnh
+            $stmt->execute();
+
+            // Trả về ID của đơn hàng vừa tạo
+            return $this->conn->lastInsertId();
+
+        } catch (PDOException $e) {
+            // Xử lý lỗi
+            throw new Exception("Lỗi khi tạo đơn hàng: " . $e->getMessage());
+        }
+    }
+
+
+
+
 }
 ?>

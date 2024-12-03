@@ -46,4 +46,6 @@ match ($act) {
     'add-to-cart' => (new GioHangController())->add(),
     'remove' => (new GioHangController())->remove(),
     'update-cart' => (new GioHangController())->updateCartQuantity(),
+    'checkout' => (new GioHangController())->checkout(),
+    'place-order' => (new GioHangController())->placeOrder(),
 };

@@ -35,7 +35,7 @@ class SanPhamController
 
         $currentProducts = $this->modelSanPham->getSanPhamByDanhMucWithPagination($idDanhMuc, $productsPerPage, $startIndex);
         $danhMuc = $this->modelDanhMuc->getDanhMucById($idDanhMuc);
-       
+        $gioHang = $this->modelGioHang->getGioHangByUserId($_SESSION['user']);
 
 
         
@@ -58,11 +58,13 @@ class SanPhamController
         $currentProducts = $this->modelSanPham->getSanPhamByPriceRangeWithPagination($minPrice, $maxPrice, $productsPerPage, $startIndex);
 
         $danhMucs = $this->modelDanhMuc->getAllDanhMuc();
+        $gioHang = $this->modelGioHang->getGioHangByUserId($_SESSION['user']);
 
         require_once 'views/shop.php';
     }
     public function sanPhamChiTiet($idSanPham = null)
     {
+        $gioHang = $this->modelGioHang->getGioHangByUserId($_SESSION['user']);
         $sanPham = $this->modelSanPham->getSanPhamById($idSanPham);
         $sanPhamLienQuan = $this->modelSanPham->getSanPhamLienQuan($sanPham['id_danh_muc'], $idSanPham);
         $danhMuc = $this->modelDanhMuc->getDanhMucById($sanPham['id_danh_muc']);
