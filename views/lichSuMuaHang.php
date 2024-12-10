@@ -225,14 +225,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <td>1</td>
+                                    <!-- <td>1</td>
                                     <td>2024-11-23</td>
                                     <td>500000.00</td>
                                     <td>COD(thanh toán khi nhận hàng)</td>
                                     <td>Thành công</td>
-                                    <td></td>
-                                    <!-- <?php
-                                    foreach ($donhangs as $donhang):
+                                    <td></td> -->
+                                    <?php
+                                    if (isset($donhangs) && is_array($donhangs)) {
+                                        foreach ($donhangs as $donhang) {
+                                            // Xử lý từng đơn hàng
+                                        }
+                                    } else {
+                                        echo "Không có đơn hàng để hiển thị.";
+                                    }
+                                    
+                                    foreach ($donhang as $donhang):
 
                                      ?>
                                      <tr>
@@ -253,7 +261,7 @@
                                      </tr>
                                       <?php
                                      endforeach;
-                                     ?> -->
+                                     ?>
                                 </tbody>
                                 <tfoot>
                                    
