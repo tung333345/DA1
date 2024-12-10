@@ -19,6 +19,9 @@ class TaiKhoanController
         $khachhangs = $this->modelTaiKhoan->getAllCustomer();
         require_once './views/taikhoan/khachhang/listKhachHang.php';
     }
+
+
+
     // Hiển thị form thêm tài khoản quản trị
     public function formAddQuanTri()
     {
@@ -206,6 +209,8 @@ class TaiKhoanController
         $errors['anh_dai_dien'] = 'File tải lên không hợp lệ hoặc không tồn tại.';
         return null;
     }
+    //khach hang
+  
     
 }
 ?>

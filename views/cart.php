@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -170,7 +171,13 @@
                                 </div>
                             </div>
                             <div class="header-cart">
-                                <a href="?act=gio-hang"><i class="fa fa-shopping-cart"></i><span>3</span></a>
+                                <a href="?act=gio-hang"><i class="fa fa-shopping-cart"></i><span>
+                                    <?php if (!empty($gioHang)): ?>
+                                        <?= count($gioHang) ?>
+                                    <?php else: ?>
+                                        0
+                                    <?php endif; ?>
+                                </span></a>
                                 <!--Mini Cart Dropdown Start-->
 
                                 <!--Mini Cart Dropdown End-->
@@ -248,7 +255,7 @@
                                                     <span><?= $item['gia_san_pham'] * $item['so_luong'] ?>$</span>
                                                 </td>
                                                 <td class="pro-remove">
-                                                    <a href="?act=remove&id=<?= $item['id_san_pham'] ?>">Xóa</a>
+                                                    <a href="?act=remove&id=<?= $item['id_san_pham'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng không?')">Xóa</a>
 
                                                 </td>
                                             </tr>
@@ -281,8 +288,9 @@
                                             <h4 style="line-height: 45px;"><?= number_format($tongTien, 2) ?>$</h4>
                                         </td>
                                         <td class="text-center">
+                                            
                                             <div class="cart-summary-button">
-                                                <a style="color: #fff;" class="btn" href="checkout.html">Thanh toán</a>
+                                                <a style="color: #fff;" class="btn" href="?act=checkout">Thanh toán</a>
                                             </div>
                                         </td>
                                     </tr>

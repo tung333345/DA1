@@ -8,7 +8,7 @@ class LichSuModel
         $this->conn = connectDB();
     }
 
-    public function getDonHangFromUser($taikhoanid)
+    public function getDonHangFromUser($tai_khoan_id)
     {
         try {
             $sql = "SELECT * 
@@ -18,7 +18,7 @@ class LichSuModel
             $stmt = $this->conn->prepare($sql);
           
             $stmt->execute([
-                ':tai_khoan_id'=> $taikhoanid
+                ':tai_khoan_id'=> $tai_khoan_id
             ]);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $th) {

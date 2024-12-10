@@ -170,7 +170,13 @@
                                 </div>
                             </div>
                             <div class="header-cart">
-                                <a href="cart.html"><i class="fa fa-shopping-cart"></i><span>3</span></a>
+                                <a href="?act=gio-hang"><i class="fa fa-shopping-cart"></i><span>
+                                <?php if (!empty($gioHang)): ?>
+                                        <?= count($gioHang) ?>
+                                    <?php else: ?>
+                                        0
+                                    <?php endif; ?>
+                                </span></a>
                             </div>
                         </div>
                         <!--Search Cart End-->

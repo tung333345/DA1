@@ -223,11 +223,12 @@
                                 <tbody>
                                     <tr>
                                         <th>Hình ảnh</th>
-                                        <th>Ten sản phẩm</th>
+                                        <th>Tên sản phẩm</th>
                                         <th>Đơn giá</th>
                                         <th>Số lượng </th>
                                         <th>Thành tiền</th>
                                     </tr>
+                                    <td>1</td>
                                     <?php  
                                     foreach ($chiTietDonHang as $item):
                                     ?>
@@ -249,7 +250,7 @@
                     <!-- thong tin don hang -->
                     <div class="col-5">
                         <div class="cart-table table-responsive mb-30">
-                            <table class="table">
+                            <table class="table ">
                                 <thead>
                                 <tr>
                                     <th class="col-2">Thông tin đơn hàng</th>
@@ -259,41 +260,51 @@
                                     <tr>
                                         <th>Mã đơn hàng</th>
                                         <td><?= $donhang['ma_don_hang']?></td>
+                                         <td>1</td>
                                     </tr>
                                     <tr>
                                         <th>Người nhận</th>
+                                        <td>thin233334676</td>
                                         <td><?= $donhang['ten_nguoi_nhan']?></td>
                                     </tr>
                                     <tr>
                                         <th>Email</th>
+                                        <td>thin@gmail.com</td>
                                         <td><?= $donhang['email_nguoi_nhan']?></td>
                                     </tr>
                                     <tr>
                                         <th>Số điện thoại</th>
+                                        <td>0395803060</td>
                                         <td><?= $donhang['sdt_nguoi_nhan']?></td>
                                     </tr>
                                     <tr>
                                         <th>Địa chỉ</th>
+                                        <td>hạ mỗ 1</td>
                                         <td><?= $donhang['dia_chi_nguoi_nhan']?></td>
                                     </tr>
                                     <tr>
                                         <th>Ngày đặt</th>
+                                        <td>2024-11-23</td>
                                         <td><?= $donhang['ngay_dat']?></td>
                                     </tr>
                                     <tr>
                                         <th>Ghi chú</th>
+                                        <td>thin</td>
                                         <td><?= $donhang['ghi_chu']?></td>
                                     </tr>
                                     <tr>
                                         <th>Tổng tiền</th>
+                                        <td>50000.00</td>
                                         <td><?=number_format( $donhang['tong_tien'],0,',','.')?></td>
                                     </tr>
                                     <tr>
                                         <th>Phương thức thanh toán</th>
+                                        <td>COD(thanh toán khi nhận hàng)</td>
                                         <td><?= $phuongThucThanhToan[$donhang['phuong_thuc_thanh_toan_id'] ]?></td>
                                     </tr>
                                     <tr>
                                         <th>Trạng thái đơn hàng</th>
+                                        <td>Thành công</td>
                                         <td><?= $trangThaiDonHang[ $donhang['trang_thai_id']]?></td>
                                     </tr>
                                 </tbody>

@@ -14,7 +14,7 @@ require_once './controllers/UserController.php';
 require_once './models/User.php';
 /* ---------------------------------- MODEL --------------------------------- */
 //donhang
-require_once './controllers/LichSuController.php';
+
 
 // Require toàn bộ file Controllers
 require_once './controllers/HomeController.php';
@@ -51,9 +51,14 @@ match ($act) {
     'update-cart' => (new GioHangController())->updateCartQuantity(),
 
     //donhang
-    'lich-su-mua-hang' => (new LichSuController())->lichSuMuaHang(),
-    'chi-tiet-mua-hang' => (new LichSuController())->chiTietMuaHang(),
-    'huy-don-hang' => (new LichSuController())->huyDonHang(),
+    'lich-su-mua-hang' => (new GioHangController())->lichSuMuaHang(),
+    'chi-tiet-mua-hang' => (new GioHangController())->chiTietMuaHang(),
+    'huy-don-hang' => (new GioHangController())->huyDonHang(),
+    // //thanh toán
+    // 'thanh-toan' => (new  ThanhToanController())->thanhToan(),
     
+
+    'checkout' => (new GioHangController())->checkout(),
+    'place-order' => (new GioHangController())->placeOrder(),
 
 };

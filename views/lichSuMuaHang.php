@@ -225,11 +225,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php
+                                    <td>1</td>
+                                    <td>2024-11-23</td>
+                                    <td>500000.00</td>
+                                    <td>COD(thanh toán khi nhận hàng)</td>
+                                    <td>Thành công</td>
+                                    <td></td>
+                                    <!-- <?php
                                     foreach ($donhangs as $donhang):
 
                                      ?>
                                      <tr>
+                               
                                         <td><?= $donhang['ma_don_hang'] ?></td>
                                         <td><?= $donhang['ngay_dat'] ?></td>
                                         <td><?= $donhang['tong_tien'] ?></td>
@@ -246,7 +253,7 @@
                                      </tr>
                                       <?php
                                      endforeach;
-                                     ?>
+                                     ?> -->
                                 </tbody>
                                 <tfoot>
                                    
