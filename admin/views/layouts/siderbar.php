@@ -72,6 +72,21 @@
                     </div>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarDanhMuc" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lý đơn hàng</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarDanhMuc">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="?act=don-hang" class="nav-link" data-key="t-sweet-alerts">
+                                    Đơn hàng
+                                </a>
+                            </li>
+                                                 
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
                         <a class="nav-link" href="#" data-bs-toggle="collapse" role="button" aria-expanded="false" data-bs-target="#accountManagement">
                             <i class="fa-solid fa-user-tie"></i> <!-- Biểu tượng quản lý tài khoản -->
                             <span data-key="t-advance-ui">Quản lý Tài Khoản</span>

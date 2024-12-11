@@ -13,6 +13,8 @@ require_once './controllers/UserController.php';
 /* ---------------------------------- MODEL --------------------------------- */
 require_once './models/User.php';
 /* ---------------------------------- MODEL --------------------------------- */
+//donhang
+
 
 // Require toàn bộ file Controllers
 require_once './controllers/HomeController.php';
@@ -25,7 +27,8 @@ require_once './models/SanPhamModel.php';
 require_once './models/DanhMucModel.php';
 require_once './models/GioHangModel.php';
 
-
+//donhang
+require_once './models/LichSuModel.php';
 
 /* --------------------------------- ROUTER --------------------------------- */
 $act = $_GET['act'] ?? '/';
@@ -46,6 +49,16 @@ match ($act) {
     'add-to-cart' => (new GioHangController())->add(),
     'remove' => (new GioHangController())->remove(),
     'update-cart' => (new GioHangController())->updateCartQuantity(),
+
+    //donhang
+    'lich-su-mua-hang' => (new GioHangController())->lichSuMuaHang(),
+    'chi-tiet-mua-hang' => (new GioHangController())->chiTietMuaHang(),
+    'huy-don-hang' => (new GioHangController())->huyDonHang(),
+    // //thanh toán
+    // 'thanh-toan' => (new  ThanhToanController())->thanhToan(),
+    
+
     'checkout' => (new GioHangController())->checkout(),
     'place-order' => (new GioHangController())->placeOrder(),
+
 };

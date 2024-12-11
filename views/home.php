@@ -47,6 +47,7 @@
                                             <ul class="ht-dropdown right">
                                                 <li><a href="my-account.html">My Account</a></li>
                                                 <li><a href="?act=dang-xuat">Đăng xuất</a></li>
+                                                <li><a href="?act=lich-su-mua-hang">Đơn Hàng</a></li>
                                             </ul>
                                         <?php else: ?>
                                             <a href="?act=tai-khoan"><i class="fa fa-user-circle"></i>Tài khoản</a>
@@ -70,7 +71,23 @@
                         <!--Logo start-->
                         <div class="col-lg-3 col-md-3 col-6 order-lg-1 order-md-1 order-1">
                             <div class="logo">
-                                <a href="?act=trang-chu"><img src="assets/images/logo.png" alt="logo TG shop"></a>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80" width="70%" height="70%"
+                                    preserveAspectRatio="xMidYMid meet">
+                                    <!-- Leaf Shape -->
+                                    <path d="M50 10 C20 40, 20 70, 50 70 C80 70, 80 40, 50 10 Z" fill="#66bb6a" />
+                                    <path d="M50 10 C80 40, 80 70, 50 70 C20 70, 20 40, 50 10 Z" fill="#a5d6a7" />
+
+                                    <!-- Circle for Harmony Symbol -->
+                                    <circle cx="50" cy="40" r="15" fill="#ffffff" stroke="#388e3c" stroke-width="2" />
+
+                                    <!-- Brand Name -->
+                                    <text x="70" y="50" font-family="Arial, sans-serif" font-size="14" fill="#388e3c"
+                                        dominant-baseline="middle" text-anchor="left">
+                                        NutriHarmony
+                                    </text>
+                                </svg>
+
+
                             </div>
                         </div>
                         <!--Logo end-->
@@ -170,12 +187,12 @@
                             </div>
                             <div class="header-cart">
                                 <a href="?act=gio-hang"><i class="fa fa-shopping-cart"></i><span>
-                                <?php if (!empty($gioHang)): ?>
-                                        <?= count($gioHang) ?>
-                                    <?php else: ?>
-                                        0
-                                    <?php endif; ?>
-                                </span></a>
+                                        <?php if (!empty($gioHang)): ?>
+                                            <?= count($gioHang) ?>
+                                        <?php else: ?>
+                                            0
+                                        <?php endif; ?>
+                                    </span></a>
                             </div>
                         </div>
                         <!--Search Cart End-->
@@ -212,39 +229,13 @@
             ]'>
                 <!--Hero Item start-->
                 <div class="hero-item bg-image" data-bg="./assets/images/hero/hero-2.jpg">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <!--Hero Content start-->
-                                <div class="hero-content-2 color-2">
-                                    <h2>view our</h2>
-                                    <h1>Women's hair</h1>
-                                    <h3>Products now</h3>
-                                    <a href="shop.html">shop now</a>
-                                </div>
-                                <!--Hero Content end-->
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                 <!--Hero Item end-->
 
                 <!--Hero Item start-->
                 <div class="hero-item bg-image" data-bg="./assets/images/hero/hero-9.jpg">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <!--Hero Content start-->
-                                <div class="hero-content-2 color-2">
-                                    <h2>view our</h2>
-                                    <h1>Women's hair</h1>
-                                    <h3>Products now</h3>
-                                    <a href="shop.html">shop now</a>
-                                </div>
-                                <!--Hero Content end-->
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
                 <!--Hero Item end-->
             </div>
@@ -427,37 +418,7 @@
 
     <!--Banner section start-->
     <div class="banner-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-3">
-                    <!-- Single Banner Start -->
-                    <div class="single-banner mb-30">
-                        <a href="#">
-                            <img src="assets/images/banner/h1-banner-1.png" alt="">
-                        </a>
-                    </div>
-                    <!-- Single Banner End -->
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <!-- Single Banner Start -->
-                    <div class="single-banner mb-30">
-                        <a href="#">
-                            <img src="assets/images/banner/h1-banner-2.png" alt="">
-                        </a>
-                    </div>
-                    <!-- Single Banner End -->
-                </div>
-                <div class="col-lg-3 col-md-3">
-                    <!-- Single Banner Start -->
-                    <div class="single-banner mb-30">
-                        <a href="#">
-                            <img src="assets/images/banner/h1-banner-3.png" alt="">
-                        </a>
-                    </div>
-                    <!-- Single Banner End -->
-                </div>
-            </div>
-        </div>
+        
     </div>
     <!--Banner section end-->
 
@@ -472,7 +433,6 @@
                 <div class="row align-items-center">
                     <!-- Logo và thông tin -->
                     <div class="col-md-4 text-center text-md-left mb-3 mb-md-0">
-                        <img src="./assets/images/logofoo.png" alt="Logo" style="max-width: 120px;">
                         <p class="mt-2 small">
                             Sản phẩm chất lượng, dịch vụ tận tâm. Luôn đồng hành cùng bạn.
                         </p>

@@ -6,6 +6,39 @@ class GioHangModel
     {
         $this->conn = connectDB();
     }
+   // Xóa chi tiết giỏ hàng sau khi đặt hàng thành công
+   public function clearCart($userId)
+   {
+       try {
+           // Lấy id_gio_hang của người dùng
+           $sql = "SELECT id_gio_hang FROM giohang WHERE id_nguoi_dung = :userId"; // Không cần điều kiện trạng thái nữa
+           $stmt = $this->conn->prepare($sql);
+           $stmt->execute([':userId' => $userId]);
+   
+           // Kiểm tra nếu có giỏ hàng hợp lệ
+           $gioHangId = $stmt->fetchColumn();
+   
+           if ($gioHangId) {
+               // Xóa chi tiết giỏ hàng
+               $sqlDelete = "DELETE FROM chi_tiet_gio_hang WHERE id_gio_hang = :gioHangId";
+               $deleteStmt = $this->conn->prepare($sqlDelete);
+               $deleteStmt->execute([':gioHangId' => $gioHangId]);
+   
+               // Nếu bạn muốn xóa giỏ hàng, có thể sử dụng:
+               // $sqlDeleteCart = "DELETE FROM giohang WHERE id_gio_hang = :gioHangId";
+               // $deleteCartStmt = $this->conn->prepare($sqlDeleteCart);
+               // $deleteCartStmt->execute([':gioHangId' => $gioHangId]);
+           }
+       } catch (PDOException $e) {
+           echo "Lỗi khi xóa chi tiết giỏ hàng: " . $e->getMessage();
+       }
+   }
+   
+
+   
+   
+
+    
     public function getGioHangByUserId($userId)
     {
         $sql = "SELECT sp.id_san_pham, sp.ten_san_pham, sp.gia_san_pham, sp.hinh_anh, ctgh.so_luong
@@ -116,7 +149,7 @@ class GioHangModel
                         :dia_chi_nguoi_nhan, 
                         NOW(), 
                         :tong_tien, 
-                        :phuong_thuc_thanh_toan, 
+                        :phuong_thuc_thanh_toan_id, 
                         :trang_thai_id, 
                         :ghi_chu
                     )";
@@ -132,7 +165,7 @@ class GioHangModel
             $stmt->bindParam(':sdt_nguoi_nhan', $phone, PDO::PARAM_STR);
             $stmt->bindParam(':dia_chi_nguoi_nhan', $address, PDO::PARAM_STR);
             $stmt->bindParam(':tong_tien', $total, PDO::PARAM_STR);
-            $stmt->bindParam(':phuong_thuc_thanh_toan', $paymentMethod, PDO::PARAM_INT);
+            $stmt->bindParam(':phuong_thuc_thanh_toan_id', $paymentMethod, PDO::PARAM_INT);
             $stmt->bindParam(':trang_thai_id', $trangThaiId, PDO::PARAM_INT);
 
             // Gán giá trị cho trường ghi chú (nếu có)

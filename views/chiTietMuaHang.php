@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,21 +71,20 @@
                         <!--Logo start-->
                         <div class="col-lg-3 col-md-3 col-6 order-lg-1 order-md-1 order-1">
                             <div class="logo">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80" width="70%" height="70%"
-                                    preserveAspectRatio="xMidYMid meet">
-                                    <!-- Leaf Shape -->
-                                    <path d="M50 10 C20 40, 20 70, 50 70 C80 70, 80 40, 50 10 Z" fill="#66bb6a" />
-                                    <path d="M50 10 C80 40, 80 70, 50 70 C20 70, 20 40, 50 10 Z" fill="#a5d6a7" />
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80" width="70%" height="70%" preserveAspectRatio="xMidYMid meet">
+  <!-- Leaf Shape -->
+  <path d="M50 10 C20 40, 20 70, 50 70 C80 70, 80 40, 50 10 Z" fill="#66bb6a" />
+  <path d="M50 10 C80 40, 80 70, 50 70 C20 70, 20 40, 50 10 Z" fill="#a5d6a7" />
 
-                                    <!-- Circle for Harmony Symbol -->
-                                    <circle cx="50" cy="40" r="15" fill="#ffffff" stroke="#388e3c" stroke-width="2" />
+  <!-- Circle for Harmony Symbol -->
+  <circle cx="50" cy="40" r="15" fill="#ffffff" stroke="#388e3c" stroke-width="2" />
 
-                                    <!-- Brand Name -->
-                                    <text x="70" y="50" font-family="Arial, sans-serif" font-size="14" fill="#388e3c"
-                                        dominant-baseline="middle" text-anchor="left">
-                                        NutriHarmony
-                                    </text>
-                                </svg>
+  <!-- Brand Name -->
+  <text x="70" y="50" font-family="Arial, sans-serif" font-size="14" fill="#388e3c" dominant-baseline="middle" text-anchor="left">
+    NutriHarmony
+  </text>
+</svg>
+
                             </div>
                         </div>
                         <!--Logo end-->
@@ -185,13 +183,7 @@
                                 </div>
                             </div>
                             <div class="header-cart">
-                                <a href="?act=gio-hang"><i class="fa fa-shopping-cart"></i><span>
-                                    <?php if (!empty($gioHang)): ?>
-                                        <?= count($gioHang) ?>
-                                    <?php else: ?>
-                                        0
-                                    <?php endif; ?>
-                                </span></a>
+                                <a href="?act=gio-hang"><i class="fa fa-shopping-cart"></i><span>3</span></a>
                                 <!--Mini Cart Dropdown Start-->
 
                                 <!--Mini Cart Dropdown End-->
@@ -218,7 +210,7 @@
                             <h1>Shopping Cart</h1>
                             <ul class="page-breadcrumb">
                                 <li><a href="index.html">Home</a></li>
-                                <li>Cart</li>
+                                <li>Detail</li>
                             </ul>
                         </div>
 
@@ -231,83 +223,118 @@
             class="cart-section section pt-30 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50  pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
             <div class="container">
                 <div class="row">
+                    <!-- thong tin sp đơn hang -->
 
-                    <div class="col-12">
+                    <div class="col-7">
                         <div class="cart-table table-responsive mb-30">
                             <table class="table">
                                 <thead>
-                                    <tr>
-                                        <th class="pro-thumbnail">Image</th>
-                                        <th class="pro-title">Product</th>
-                                        <th class="pro-price">Price</th>
-                                        <th class="pro-quantity">Quantity</th>
-                                        <th class="pro-subtotal">Total</th>
-                                        <th class="pro-remove">Remove</th>
-                                    </tr>
+                                   <tr>
+                                    <th class="col-5">Thông tin sản phẩm</th>
+                                   </tr>
                                 </thead>
                                 <tbody>
-                                    <?php if (!empty($gioHang)): ?>
-                                        <?php foreach ($gioHang as $item): ?>
-                                            <tr>
-                                                <td class="pro-thumbnail"><a href="#"><img src="<?= $item['hinh_anh'] ?>"
-                                                            alt="Product"></a></td>
-                                                <td class="pro-title"><a href="#"><?= $item['ten_san_pham'] ?></a></td>
-                                                <td class="pro-price"><span><?= $item['gia_san_pham'] ?>$</span></td>
-                                                <td class="pro-quantity">
-                                                    <form action="?act=update-cart" method="POST">
-                                                        <input type="hidden" name="idSanPham"
-                                                            value="<?= $item['id_san_pham'] ?>">
-                                                        <input type="number" name="soLuong" value="<?= $item['so_luong'] ?>"
-                                                            min="1">
-                                                        <button class="btn btn-primary" style="border-radius: 8px;padding: 5px 10px;"  type="submit">Cập nhật</button>
-                                                    </form>
-
-
-
-                                                </td>
-                                                <td class="pro-subtotal">
-                                                    <span><?= $item['gia_san_pham'] * $item['so_luong'] ?>$</span>
-                                                </td>
-                                                <td class="pro-remove">
-                                                    <a href="?act=remove&id=<?= $item['id_san_pham'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng không?')">Xóa</a>
-
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    <?php else: ?>
-                                        <tr>
-                                            <td colspan="6" class="text-center">Giỏ hàng trống</td>
-                                        </tr>
-                                    <?php endif; ?>
-                                </tbody>
-                                <tfoot>
+                                    <tr>
+                                        <th>Hình ảnh</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Đơn giá</th>
+                                        <th>Số lượng </th>
+                                        <th>Thành tiền</th>
+                                    </tr>
+                                    <td>1</td>
                                     <?php
-                                    $tongTien = 0;
-                                    if (!empty($gioHang)) {
-                                        foreach ($gioHang as $item) {
-                                            $tongTien += $item['gia_san_pham'] * $item['so_luong'];
+                                    
+                                    if (isset($chiTietDonHang) && is_array($chiTietDonHang)) {
+                                        $grandTotal = 0; // Biến lưu tổng tiền của tất cả sản phẩm
+                                        foreach ($chiTietDonHang as $item) {
+                                            $total = $item['don_gia'] * $item['so_luong']; // Tính tổng tiền cho sản phẩm hiện tại
+                                            $grandTotal += $total; // Cộng dồn vào tổng tiền
+                                            echo "<tr>";
+                                            echo "<td><img src='" . htmlspecialchars($item['hinh_anh']) . "' alt='Product' width='100px'></td>";
+                                            echo "<td>" . htmlspecialchars($item['ten_san_pham']) . "</td>";
+                                            echo "<td>" . number_format($item['don_gia'], 2) . "</td>";
+                                            echo "<td>" . htmlspecialchars($item['so_luong']) . "</td>";
+                                            echo "<td>" . number_format($total, 2) . "</td>";
+                                            echo "</tr>";
                                         }
+                                        // Hiển thị tổng tiền cuối cùng
+                                        echo "<tr><td colspan='4' style='text-align: right;'><strong>Tổng tiền:</strong></td>";
+                                        echo "<td>" . number_format($grandTotal, 2) . "</td></tr>";
+                                    } else {
+                                        echo "<tr><td colspan='5'>Không có thông tin chi tiết cho đơn hàng này.</td></tr>";
                                     }
                                     ?>
+                                    
+                                </tbody>
+                                <tfoot>
+                                   
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- thong tin don hang -->
+                    <div class="col-5">
+                        <div class="cart-table table-responsive mb-30">
+                            <table class="table ">
+                                <thead>
+                                <tr>
+                                    <th class="col-2">Thông tin đơn hàng</th>
+                                   </tr>
+                                </thead>
+                                <tbody>
                                     <tr>
-                                        <?php if (isset($_SESSION['error'])): ?>
-                                            <div class="alert alert-danger">
-                                                <?= $_SESSION['error'];
-                                                unset($_SESSION['error']); ?></div>
-                                        <?php endif; ?>
-                                        <td colspan="4" class="text-right">
-                                            <h4 style="line-height: 45px;">Tổng:</h4>
-                                        </td>
-                                        <td class="text-center">
-                                            <h4 style="line-height: 45px;"><?= number_format($tongTien, 2) ?>$</h4>
-                                        </td>
-                                        <td class="text-center">
-                                            
-                                            <div class="cart-summary-button">
-                                                <a style="color: #fff;" class="btn" href="?act=checkout">Thanh toán</a>
-                                            </div>
-                                        </td>
+                                        <th>Mã đơn hàng</th>
+                                        <td><?= $donhang['ma_don_hang']?></td>
+                                        
                                     </tr>
+                                    <tr>
+                                        <th>Người nhận</th>
+                                        
+                                        <td><?= $donhang['ten_nguoi_nhan']?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Email</th>
+                                       
+                                        <td><?= $donhang['email_nguoi_nhan']?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Số điện thoại</th>
+                                       
+                                        <td><?= $donhang['sdt_nguoi_nhan']?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Địa chỉ</th>
+                                        
+                                        <td><?= $donhang['dia_chi_nguoi_nhan']?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Ngày đặt</th>
+                                        
+                                        <td><?= $donhang['ngay_dat']?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Ghi chú</th>
+                                        
+                                        <td><?= $donhang['ghi_chu']?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Tổng tiền</th>
+                                        
+                                        <td><?=number_format( $donhang['tong_tien'],2)?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Phương thức thanh toán</th>
+                                        
+                                        <td><?= $phuongThucThanhToan[$donhang['phuong_thuc_thanh_toan_id'] ]?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Trạng thái đơn hàng</th>
+                                        
+                                        <td><?= $trangThaiDonHang[ $donhang['trang_thai_id']]?></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                   
                                 </tfoot>
                             </table>
                         </div>
@@ -329,7 +356,6 @@
                     <div class="row align-items-center">
                         <!-- Logo và thông tin -->
                         <div class="col-md-4 text-center text-md-left mb-3 mb-md-0">
-                            <img src="./assets/images/logofoo.png" alt="Logo" style="max-width: 120px;">
                             <p class="mt-2 small">
                                 Sản phẩm chất lượng, dịch vụ tận tâm. Luôn đồng hành cùng bạn.
                             </p>
@@ -368,7 +394,6 @@
                         được bảo lưu.
                     </p>
                 </div>
-        </footer>
 
 
 </body>

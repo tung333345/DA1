@@ -21,7 +21,7 @@
 <body>
     <!--Header section start-->
     <div id="main-wrapper">
-    <header class="header header-transparent header-sticky">
+        <header class="header header-transparent header-sticky">
             <div class="header-top">
                 <div class="container">
                     <div class="row align-items-center">
@@ -41,8 +41,9 @@
                             <div class="ht-right d-flex justify-content-lg-end justify-content-center">
                                 <ul class="ht-us-menu d-flex">
                                     <li>
-                                    <?php if (isset($_SESSION['user'])): ?>
-                                            <a href="#"><i class="fas fa-user-circle"></i> <?= $_SESSION['user']['ten_dang_nhap'] ?></a>
+                                        <?php if (isset($_SESSION['user'])): ?>
+                                            <a href="#"><i class="fas fa-user-circle"></i>
+                                                <?= $_SESSION['user']['ten_dang_nhap'] ?></a>
                                             <ul class="ht-dropdown right">
                                                 <li><a href="my-account.html">My Account</a></li>
                                                 <li><a href="?act=dang-xuat">Đăng xuất</a></li>
@@ -69,7 +70,22 @@
                         <!--Logo start-->
                         <div class="col-lg-3 col-md-3 col-6 order-lg-1 order-md-1 order-1">
                             <div class="logo">
-                                <a href="?act=trang-chu"><img src="assets/images/logo.png" alt="logo TG shop"></a>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80" width="70%" height="70%"
+                                    preserveAspectRatio="xMidYMid meet">
+                                    <!-- Leaf Shape -->
+                                    <path d="M50 10 C20 40, 20 70, 50 70 C80 70, 80 40, 50 10 Z" fill="#66bb6a" />
+                                    <path d="M50 10 C80 40, 80 70, 50 70 C20 70, 20 40, 50 10 Z" fill="#a5d6a7" />
+
+                                    <!-- Circle for Harmony Symbol -->
+                                    <circle cx="50" cy="40" r="15" fill="#ffffff" stroke="#388e3c" stroke-width="2" />
+
+                                    <!-- Brand Name -->
+                                    <text x="70" y="50" font-family="Arial, sans-serif" font-size="14" fill="#388e3c"
+                                        dominant-baseline="middle" text-anchor="left">
+                                        NutriHarmony
+                                    </text>
+                                </svg>
+
                             </div>
                         </div>
                         <!--Logo end-->
@@ -169,12 +185,12 @@
                             </div>
                             <div class="header-cart">
                                 <a href="?act=gio-hang"><i class="fa fa-shopping-cart"></i><span>
-                                <?php if (!empty($gioHang)): ?>
-                                        <?= count($gioHang) ?>
-                                    <?php else: ?>
-                                        0
-                                    <?php endif; ?>
-                                </span></a>
+                                        <?php if (!empty($gioHang)): ?>
+                                            <?= count($gioHang) ?>
+                                        <?php else: ?>
+                                            0
+                                        <?php endif; ?>
+                                    </span></a>
                             </div>
                         </div>
                         <!--Search Cart End-->
@@ -207,7 +223,8 @@
             </div>
         </div>
         <!-- Single Product Section Start -->
-        <div class="single-product-section section pt-30 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-30 pb-xs-20">
+        <div
+            class="single-product-section section pt-30 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-30 pb-xs-20">
             <div class="container">
                 <div class="row">
                     <div class="col-md-5">
@@ -216,7 +233,8 @@
                             <div class="product-details-images">
                                 <div class="lg-image">
                                     <img src="<?= $sanPham['hinh_anh'] ?>" alt="">
-                                    <a href="<?= $sanPham['hinh_anh'] ?>" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
+                                    <a href="<?= $sanPham['hinh_anh'] ?>" class="popup-img venobox"
+                                        data-gall="myGallery"><i class="fa fa-expand"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -228,7 +246,7 @@
                             <div class="product-details-content-top">
                                 <h3 style="color: #FFD700;">Danh mục : <?= $danhMuc['ten_danh_muc'] ?></h3>
                             </div>
-                            
+
                             <h2><?= $sanPham['ten_san_pham'] ?></h2>
                             <div class="single-product-reviews">
                                 <i class="fa fa-star"></i>
@@ -240,13 +258,13 @@
                             </div>
                             <div class="single-product-price">
                                 <?php if ($sanPham['gia_khuyen_mai'] > 0): ?>
-                                <span class="price new-price"><?= $sanPham['gia_khuyen_mai']?>$</span>
-                                <span class="regular-price"><?= $sanPham['gia_san_pham']?>$</span>
+                                    <span class="price new-price"><?= $sanPham['gia_khuyen_mai'] ?>$</span>
+                                    <span class="regular-price"><?= $sanPham['gia_san_pham'] ?>$</span>
                                 <?php else: ?>
-                                <span class="price new-price"><?= $sanPham['gia_san_pham']?>$</span>
+                                    <span class="price new-price"><?= $sanPham['gia_san_pham'] ?>$</span>
                                 <?php endif; ?>
                             </div>
-                          
+
                             <div class="single-product-quantity">
                                 <form class="add-quantity" action="?act=add-to-cart" method="POST">
                                     <div class="product-quantity">
@@ -254,131 +272,134 @@
                                     </div>
                                     <input type="hidden" name="product_id" value="<?= $sanPham['id_san_pham'] ?>">
                                     <div class="add-to-link">
-                                        <button type="submit" class="product-add-btn" data-text="add to cart">Thêm vào giỏ hàng</button>
+                                        <button type="submit" class="product-add-btn" data-text="add to cart">Thêm vào
+                                            giỏ hàng</button>
                                     </div>
                                 </form>
                             </div>
-                            
-                        
-                           
-                            </div>
+
+
+
                         </div>
-                        <!--Product Details Content End-->
                     </div>
+                    <!--Product Details Content End-->
                 </div>
             </div>
         </div>
-        <!-- Single Product Section End -->
+    </div>
+    <!-- Single Product Section End -->
 
-        <!--Product Description Review Section Start-->
-        <div class="product-description-review-section section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="product-review-tab">
-                            <!--Review And Description Tab Menu Start-->
-                            <ul class="nav dec-and-review-menu">
-                                <li>
-                                    <a class="active" data-toggle="tab" href="#description">Description</a>
-                                </li>
-                                <li>
-                                    <a data-toggle="tab" href="#reviews">Reviews (1)</a>
-                                </li>
-                            </ul>
-                            <!--Review And Description Tab Menu End-->
-                            <!--Review And Description Tab Content Start-->
-                            <div class="tab-content product-review-content-tab" id="myTabContent-4">
-                                <div class="tab-pane fade active show" id="description">
-                                    <div class="single-product-description">
-                                       <p><?= $sanPham['mo_ta']?></p>
-                                    </div>
+    <!--Product Description Review Section Start-->
+    <div class="product-description-review-section section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-review-tab">
+                        <!--Review And Description Tab Menu Start-->
+                        <ul class="nav dec-and-review-menu">
+                            <li>
+                                <a class="active" data-toggle="tab" href="#description">Description</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#reviews">Reviews (1)</a>
+                            </li>
+                        </ul>
+                        <!--Review And Description Tab Menu End-->
+                        <!--Review And Description Tab Content Start-->
+                        <div class="tab-content product-review-content-tab" id="myTabContent-4">
+                            <div class="tab-pane fade active show" id="description">
+                                <div class="single-product-description">
+                                    <p><?= $sanPham['mo_ta'] ?></p>
                                 </div>
-                                <div class="tab-pane fade" id="reviews">
-                                    <div class="review-page-comment">
-                                        <h2>1 review for Sit voluptatem</h2>
-                                        <ul>
-                                            <li>
-                                                <div class="product-comment">
-                                                    <img src="./assets/images/icons/author.jpg" alt="">
-                                                    <div class="product-comment-content">
-                                                        <div class="product-reviews">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </div>
-                                                        <p class="meta">
-                                                            <strong>admin</strong> - <span>November 22, 2018</span>
-                                                        <div class="description">
-                                                            <p>Good Product</p>
-                                                        </div>
+                            </div>
+                            <div class="tab-pane fade" id="reviews">
+                                <div class="review-page-comment">
+                                    <h2>1 review for Sit voluptatem</h2>
+                                    <ul>
+                                        <li>
+                                            <div class="product-comment">
+                                                <img src="./assets/images/icons/author.jpg" alt="">
+                                                <div class="product-comment-content">
+                                                    <div class="product-reviews">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                    </div>
+                                                    <p class="meta">
+                                                        <strong>admin</strong> - <span>November 22, 2018</span>
+                                                    <div class="description">
+                                                        <p>Good Product</p>
                                                     </div>
                                                 </div>
-                                            </li>
-                                        </ul>
-                                        <div class="review-form-wrapper">
-                                            <div class="review-form">
-                                                <span class="comment-reply-title">Add a review </span>
-                                                <form action="#">
-                                                    <p class="comment-notes">
-                                                        <span id="email-notes">Your email address will not be published.</span>
-                                                        Required fields are marked
-                                                        <span class="required">*</span>
-                                                    </p>
-                                                    <div class="comment-form-rating">
-                                                        <label>Your rating</label>
-                                                        <div class="rating">
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="input-element">
-                                                        <div class="comment-form-comment">
-                                                            <label>Comment</label>
-                                                            <textarea name="message" cols="40" rows="8"></textarea>
-                                                        </div>
-                                                        <div class="review-comment-form-author">
-                                                            <label>Name </label>
-                                                            <input required="required" type="text">
-                                                        </div>
-                                                        <div class="review-comment-form-email">
-                                                            <label>Email </label>
-                                                            <input required="required" type="text">
-                                                        </div>
-                                                        <div class="comment-submit">
-                                                            <button type="submit" class="form-button">Submit</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
                                             </div>
+                                        </li>
+                                    </ul>
+                                    <div class="review-form-wrapper">
+                                        <div class="review-form">
+                                            <span class="comment-reply-title">Add a review </span>
+                                            <form action="#">
+                                                <p class="comment-notes">
+                                                    <span id="email-notes">Your email address will not be
+                                                        published.</span>
+                                                    Required fields are marked
+                                                    <span class="required">*</span>
+                                                </p>
+                                                <div class="comment-form-rating">
+                                                    <label>Your rating</label>
+                                                    <div class="rating">
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="input-element">
+                                                    <div class="comment-form-comment">
+                                                        <label>Comment</label>
+                                                        <textarea name="message" cols="40" rows="8"></textarea>
+                                                    </div>
+                                                    <div class="review-comment-form-author">
+                                                        <label>Name </label>
+                                                        <input required="required" type="text">
+                                                    </div>
+                                                    <div class="review-comment-form-email">
+                                                        <label>Email </label>
+                                                        <input required="required" type="text">
+                                                    </div>
+                                                    <div class="comment-submit">
+                                                        <button type="submit" class="form-button">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!--Review And Description Tab Content End-->
                         </div>
+                        <!--Review And Description Tab Content End-->
                     </div>
                 </div>
             </div>
         </div>
-        <!--Product Description Review Section Start-->
+    </div>
+    <!--Product Description Review Section Start-->
 
-        <!-- Related Products Section Start -->
-        <div class="related-products-section section pt-30 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-30 pb-xs-20">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="section-title text-center mb-30">
-                            <h2>Sản phẩm cùng danh mục</h2>
-                        </div>
+    <!-- Related Products Section Start -->
+    <div
+        class="related-products-section section pt-30 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-30 pb-xs-20">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="section-title text-center mb-30">
+                        <h2>Sản phẩm cùng danh mục</h2>
                     </div>
                 </div>
-                <div class="row">
-                    <?php foreach ($sanPhamLienQuan as $sp): ?>
+            </div>
+            <div class="row">
+                <?php foreach ($sanPhamLienQuan as $sp): ?>
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-product">
                             <div class="product-img">
@@ -387,86 +408,90 @@
                                 </a>
                             </div>
                             <div class="product-content">
-                                <h3><a href="?act=san-pham-chi-tiet&id_san_pham=<?= $sanPham['id_san_pham'] ?>"><?= $sp['ten_san_pham'] ?></a></h3>
+                                <h3><a
+                                        href="?act=san-pham-chi-tiet&id_san_pham=<?= $sanPham['id_san_pham'] ?>"><?= $sp['ten_san_pham'] ?></a>
+                                </h3>
                                 <div class="product-price">
                                     <?php if ($sp['gia_khuyen_mai'] > 0): ?>
-                                    <span class="new-price"  style="color: #cea679; font-weight: bold; text-decoration: none;" ><?= $sp['gia_khuyen_mai'] ?>$</span>
-                                    <span class="old-price"  style="text-decoration: line-through; color: #gray; ; font-weight: bold;" ><?= $sp['gia_san_pham'] ?>$</span>
+                                        <span class="new-price"
+                                            style="color: #cea679; font-weight: bold; text-decoration: none;"><?= $sp['gia_khuyen_mai'] ?>$</span>
+                                        <span class="old-price"
+                                            style="text-decoration: line-through; color: #gray; ; font-weight: bold;"><?= $sp['gia_san_pham'] ?>$</span>
                                     <?php else: ?>
-                                    <span class="new-price" style="color:#cea679; font-weight: bold;" ><?= $sp['gia_san_pham'] ?>$</span>
+                                        <span class="new-price"
+                                            style="color:#cea679; font-weight: bold;"><?= $sp['gia_san_pham'] ?>$</span>
                                     <?php endif; ?>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <?php endforeach; ?>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
-        <!-- Related Products Section End -->
+    </div>
+    <!-- Related Products Section End -->
 
-        <footer class="footer-section section bg-dark">
+    <footer class="footer-section section bg-dark">
 
-            <!--Footer Top start-->
-            <div
-                class="footer-top section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-45 pb-lg-25 pb-md-15 pb-sm-5 pb-xs-0">
-                <div class="container py-4">
-                        <div class="row align-items-center">
-                            <!-- Logo và thông tin -->
-                            <div class="col-md-4 text-center text-md-left mb-3 mb-md-0">
-                                <img src="./assets/images/logofoo.png" alt="Logo" style="max-width: 120px;">
-                                <p class="mt-2 small">
-                                    Sản phẩm chất lượng, dịch vụ tận tâm. Luôn đồng hành cùng bạn.
-                                </p>
-                            </div>
+        <!--Footer Top start-->
+        <div
+            class="footer-top section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-45 pb-lg-25 pb-md-15 pb-sm-5 pb-xs-0">
+            <div class="container py-4">
+                <div class="row align-items-center">
+                    <!-- Logo và thông tin -->
+                    <div class="col-md-4 text-center text-md-left mb-3 mb-md-0">
+                        <p class="mt-2 small">
+                            Sản phẩm chất lượng, dịch vụ tận tâm. Luôn đồng hành cùng bạn.
+                        </p>
+                    </div>
 
-                            <!-- Liên kết nhanh -->
-                            <div class="col-md-4 text-center">
-                                <h5 class="mb-3">Liên kết</h5>
-                                <ul class="list-unstyled d-flex justify-content-center mb-0">
-                                    <li class="mx-3"><a href="#about" class="text-white text-decoration-none small">Về
-                                            chúng tôi</a></li>
-                                    <li class="mx-3"><a href="#policy"
-                                            class="text-white text-decoration-none small">Chính sách</a></li>
-                                    <li class="mx-3"><a href="#contact"
-                                            class="text-white text-decoration-none small">Liên hệ</a></li>
-                                </ul>
-                            </div>
+                    <!-- Liên kết nhanh -->
+                    <div class="col-md-4 text-center">
+                        <h5 class="mb-3">Liên kết</h5>
+                        <ul class="list-unstyled d-flex justify-content-center mb-0">
+                            <li class="mx-3"><a href="#about" class="text-white text-decoration-none small">Về
+                                    chúng tôi</a></li>
+                            <li class="mx-3"><a href="#policy" class="text-white text-decoration-none small">Chính
+                                    sách</a></li>
+                            <li class="mx-3"><a href="#contact" class="text-white text-decoration-none small">Liên
+                                    hệ</a></li>
+                        </ul>
+                    </div>
 
-                            <!-- Mạng xã hội -->
-                            <div class="col-md-4 text-center text-md-right">
-                                <h5 class="mb-3">Kết nối</h5>
-                                <div class="d-flex justify-content-center justify-content-md-end">
-                                    <a href="#" class="text-white mx-2"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
-                                    <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
-                                    <a href="#" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
-                                </div>
-                            </div>
+                    <!-- Mạng xã hội -->
+                    <div class="col-md-4 text-center text-md-right">
+                        <h5 class="mb-3">Kết nối</h5>
+                        <div class="d-flex justify-content-center justify-content-md-end">
+                            <a href="#" class="text-white mx-2"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
                         </div>
-                    </div>div
-            </div>
-            <!--Footer Top end-->
+                    </div>
+                </div>
+            </div>div
+        </div>
+        <!--Footer Top end-->
 
-            <!--Footer bottom start-->
-            <div class="footer-bottom section">
-                <div class="container ft-border pt-40 pb-40 pt-xs-20 pb-xs-20">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-lg-6 col-md-6 col-sm-8">
-                            <div class="copyright text-left">
-                                <p>Copyright &copy;2019 <a href="#">Theface</a>. All rights reserved.</p>
-                            </div>
+        <!--Footer bottom start-->
+        <div class="footer-bottom section">
+            <div class="container ft-border pt-40 pb-40 pt-xs-20 pb-xs-20">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-lg-6 col-md-6 col-sm-8">
+                        <div class="copyright text-left">
+                            <p>Copyright &copy;2019 <a href="#">Theface</a>. All rights reserved.</p>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-4">
-                            <div class="footer-logo text-right">
-                                <a href="index.html"><img src="./assets/images/logofoo.png" alt=""></a>
-                            </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-4">
+                        <div class="footer-logo text-right">
+                            <a href="index.html"><img src="./assets/images/logofoo.png" alt=""></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--Footer bottom end-->
-        </footer>
+        </div>
+        <!--Footer bottom end-->
+    </footer>
     </div>
 
 </body>

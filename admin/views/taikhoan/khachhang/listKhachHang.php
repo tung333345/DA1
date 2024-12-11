@@ -65,7 +65,18 @@
                                                             <td><?= htmlspecialchars($khachhang['ten_dang_nhap']) ?></td>
                                                             <td><?= htmlspecialchars($khachhang['email']) ?></td>
                                                             <td><?= htmlspecialchars($khachhang['ngay_tao']) ?></td>
-                                                            
+                                                            <td>
+                                                            <div  style="display: flex; gap: 10px;" >
+                                                                
+                                                                <a href="?act=chi-tiet-khach-hang=<?= $khachhang["ma_nguoi_dung"] ?>">
+                                                                    <button class='btn btn-primary'>
+                                                                        <i class="fas fa-eye"></i>Chi tiết</button></a>
+                                                                    <a href="?act=form-sua-khach-hang=<?= $khachhang["ma_nguoi_dung"] ?>"
+                                                                    class='btn btn-danger'><i class="fas fa-cogs"></i>Sửa</a>
+                                                                   
+                                                                                                                               
+                                                            </div>
+                                                            </td>
                                                         </tr>
                                                     <?php endforeach; ?>
                                                 <?php else: ?>

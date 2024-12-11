@@ -23,7 +23,7 @@
     <!--Header section start-->
     <div id="main-wrapper">
         <header class="header header-transparent header-sticky">
-        <div class="header-top">
+            <div class="header-top">
                 <div class="container">
                     <div class="row align-items-center">
                         <div
@@ -42,8 +42,9 @@
                             <div class="ht-right d-flex justify-content-lg-end justify-content-center">
                                 <ul class="ht-us-menu d-flex">
                                     <li>
-                                    <?php if (isset($_SESSION['user'])): ?>
-                                            <a href="#"><i class="fas fa-user-circle"></i> <?= $_SESSION['user']['ten_dang_nhap'] ?></a>
+                                        <?php if (isset($_SESSION['user'])): ?>
+                                            <a href="#"><i class="fas fa-user-circle"></i>
+                                                <?= $_SESSION['user']['ten_dang_nhap'] ?></a>
                                             <ul class="ht-dropdown right">
                                                 <li><a href="my-account.html">My Account</a></li>
                                                 <li><a href="?act=dang-xuat">Đăng xuất</a></li>
@@ -70,7 +71,22 @@
                         <!--Logo start-->
                         <div class="col-lg-3 col-md-3 col-6 order-lg-1 order-md-1 order-1">
                             <div class="logo">
-                                <a href="?act=trang-chu"><img src="./views/assets/images/logo.png" alt="logo TG shop"></a>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80" width="70%" height="70%"
+                                    preserveAspectRatio="xMidYMid meet">
+                                    <!-- Leaf Shape -->
+                                    <path d="M50 10 C20 40, 20 70, 50 70 C80 70, 80 40, 50 10 Z" fill="#66bb6a" />
+                                    <path d="M50 10 C80 40, 80 70, 50 70 C20 70, 20 40, 50 10 Z" fill="#a5d6a7" />
+
+                                    <!-- Circle for Harmony Symbol -->
+                                    <circle cx="50" cy="40" r="15" fill="#ffffff" stroke="#388e3c" stroke-width="2" />
+
+                                    <!-- Brand Name -->
+                                    <text x="70" y="50" font-family="Arial, sans-serif" font-size="14" fill="#388e3c"
+                                        dominant-baseline="middle" text-anchor="left">
+                                        NutriHarmony
+                                    </text>
+                                </svg>
+
                             </div>
                         </div>
                         <!--Logo end-->
@@ -79,7 +95,7 @@
                         <div
                             class="col-lg-6 col-md-6 col-12 order-lg-2 order-md-2 order-3 d-flex justify-content-center">
                             <nav class="main-menu">
-                            <ul>
+                                <ul>
                                     <li><a style="display: inline-block; white-space: nowrap;" href="?act=/">Trang
                                             chủ</a></li>
 
@@ -208,136 +224,138 @@
         <!-- Page Banner Section End -->
 
         <!--Login Register section start-->
-        <div class="login-register-section section pt-30 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50  pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
-        <div class="container">
-            <div class="row">
-                <!-- Login Form Start -->
-                <div class="col-md-6 col-sm-6">
-                    <div class="customer-login-register">
-                        <div class="form-login-title">
-                            <h2>Đăng nhập</h2>
-                        </div>
-                        <div class="login-form">
-                            <form action="?act=tai-khoan" method="POST">
-                                <div class="form-fild">
-                                    <p><label>Tên đăng nhập<span class="required">*</span></label></p>
-                                    <input name="ten_dang_nhap" value="" type="text">
-                                </div>
-                                <div class="form-fild">
-                                    <p><label>Mật khẩu<span class="required">*</span></label></p>
-                                    <input name="mat_khau" value="" type="password">
-                                </div>
-                                <div class="login-submit">
-                                    <button type="submit" name="action" value="login" class="btn">Đăng nhập</button>
-                                    <label>
-                                        <input class="checkbox" name="rememberme" value="1" type="checkbox">
-                                        <span>Lưu thông tin</span>
-                                    </label>
-                                </div>
-                                <div class="lost-password">
-                                    <a href="#">Quên mật khẩu?</a>
-                                </div>
-                            </form>
+        <div
+            class="login-register-section section pt-30 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50  pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
+            <div class="container">
+                <div class="row">
+                    <!-- Login Form Start -->
+                    <div class="col-md-6 col-sm-6">
+                        <div class="customer-login-register">
+                            <div class="form-login-title">
+                                <h2>Đăng nhập</h2>
+                            </div>
+                            <div class="login-form">
+                                <form action="?act=tai-khoan" method="POST">
+                                    <div class="form-fild">
+                                        <p><label>Tên đăng nhập<span class="required">*</span></label></p>
+                                        <input name="ten_dang_nhap" value="" type="text">
+                                    </div>
+                                    <div class="form-fild">
+                                        <p><label>Mật khẩu<span class="required">*</span></label></p>
+                                        <input name="mat_khau" value="" type="password">
+                                    </div>
+                                    <div class="login-submit">
+                                        <button type="submit" name="action" value="login" class="btn">Đăng nhập</button>
+                                        <label>
+                                            <input class="checkbox" name="rememberme" value="1" type="checkbox">
+                                            <span>Lưu thông tin</span>
+                                        </label>
+                                    </div>
+                                    <div class="lost-password">
+                                        <a href="#">Quên mật khẩu?</a>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- Login Form End -->
+                    <!-- Login Form End -->
 
-                <!-- Register Form Start -->
-                <div class="col-md-6 col-sm-6">
-                    <div class="customer-login-register register-pt-0">
-                        <div class="form-register-title">
-                            <h2>Đăng ký</h2>
-                        </div>
-                        <div class="register-form">
-                            <form action="?act=tai-khoan" method="POST">
-                                <div class="form-fild">
-                                    <p><label>Tên đăng nhập<span class="required">*</span></label></p>
-                                    <input name="ten_dang_nhap" value="" type="text">
-                                </div>
-                                <div class="form-fild">
-                                    <p><label>Email<span class="required">*</span></label></p>
-                                    <input name="email" value="" type="text">
-                                </div>
-                                <div class="form-fild">
-                                    <p><label>Mật khẩu<span class="required">*</span></label></p>
-                                    <input name="mat_khau" value="" type="password">
-                                </div>
-                                <div class="form-fild">
-                                    <p><label>Nhập lại mật khẩu<span class="required">*</span></label></p>
-                                    <input name="re_mat_khau" value="" type="password">
-                                </div>
-                                <div class="register-submit">
-                                    <button type="submit" name="action" value="register" class="btn">Đăng ký</button>
-                                </div>
-                            </form>
+                    <!-- Register Form Start -->
+                    <div class="col-md-6 col-sm-6">
+                        <div class="customer-login-register register-pt-0">
+                            <div class="form-register-title">
+                                <h2>Đăng ký</h2>
+                            </div>
+                            <div class="register-form">
+                                <form action="?act=tai-khoan" method="POST">
+                                    <div class="form-fild">
+                                        <p><label>Tên đăng nhập<span class="required">*</span></label></p>
+                                        <input name="ten_dang_nhap" value="" type="text">
+                                    </div>
+                                    <div class="form-fild">
+                                        <p><label>Email<span class="required">*</span></label></p>
+                                        <input name="email" value="" type="text">
+                                    </div>
+                                    <div class="form-fild">
+                                        <p><label>Mật khẩu<span class="required">*</span></label></p>
+                                        <input name="mat_khau" value="" type="password">
+                                    </div>
+                                    <div class="form-fild">
+                                        <p><label>Nhập lại mật khẩu<span class="required">*</span></label></p>
+                                        <input name="re_mat_khau" value="" type="password">
+                                    </div>
+                                    <div class="register-submit">
+                                        <button type="submit" name="action" value="register" class="btn">Đăng
+                                            ký</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
+                    <!-- Register Form End -->
                 </div>
-                <!-- Register Form End -->
             </div>
-</div>
 
-<script>
-    // Hiển thị trường email nếu người dùng nhấn vào nút Đăng ký
-    document.querySelector('button[value="register"]').addEventListener('click', function () {
-        document.getElementById('register-email').style.display = 'block';
-    });
-</script>
+            <script>
+                // Hiển thị trường email nếu người dùng nhấn vào nút Đăng ký
+                document.querySelector('button[value="register"]').addEventListener('click', function () {
+                    document.getElementById('register-email').style.display = 'block';
+                });
+            </script>
 
         </div>
         <!--Login Register section end-->
-      
+
 
         <footer class="footer-section section bg-dark">
 
-        <footer class="footer bg-dark text-white">
-            <div class="container py-4">
-                <div class="row align-items-center">
-                    <!-- Logo và thông tin -->
-                    <div class="col-md-4 text-center text-md-left mb-3 mb-md-0">
-                        <img src="./assets/images/logofoo.png" alt="Logo" style="max-width: 120px;">
-                        <p class="mt-2 small">
-                            Sản phẩm chất lượng, dịch vụ tận tâm. Luôn đồng hành cùng bạn.
-                        </p>
-                    </div>
+            <footer class="footer bg-dark text-white">
+                <div class="container py-4">
+                    <div class="row align-items-center">
+                        <!-- Logo và thông tin -->
+                        <div class="col-md-4 text-center text-md-left mb-3 mb-md-0">
+                            
+                            <p class="mt-2 small">
+                                Sản phẩm chất lượng, dịch vụ tận tâm. Luôn đồng hành cùng bạn.
+                            </p>
+                        </div>
 
-                    <!-- Liên kết nhanh -->
-                    <div class="col-md-4 text-center">
-                        <h5 class="mb-3">Liên kết</h5>
-                        <ul class="list-unstyled d-flex justify-content-center mb-0">
-                            <li class="mx-3"><a href="#about" class="text-white text-decoration-none small">Về
-                                    chúng tôi</a></li>
-                            <li class="mx-3"><a href="#policy" class="text-white text-decoration-none small">Chính
-                                    sách</a></li>
-                            <li class="mx-3"><a href="#contact" class="text-white text-decoration-none small">Liên
-                                    hệ</a></li>
-                        </ul>
-                    </div>
+                        <!-- Liên kết nhanh -->
+                        <div class="col-md-4 text-center">
+                            <h5 class="mb-3">Liên kết</h5>
+                            <ul class="list-unstyled d-flex justify-content-center mb-0">
+                                <li class="mx-3"><a href="#about" class="text-white text-decoration-none small">Về
+                                        chúng tôi</a></li>
+                                <li class="mx-3"><a href="#policy" class="text-white text-decoration-none small">Chính
+                                        sách</a></li>
+                                <li class="mx-3"><a href="#contact" class="text-white text-decoration-none small">Liên
+                                        hệ</a></li>
+                            </ul>
+                        </div>
 
-                    <!-- Mạng xã hội -->
-                    <div class="col-md-4 text-center text-md-right">
-                        <h5 class="mb-3">Kết nối</h5>
-                        <div class="d-flex justify-content-center justify-content-md-end">
-                            <a href="#" class="text-white mx-2"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
+                        <!-- Mạng xã hội -->
+                        <div class="col-md-4 text-center text-md-right">
+                            <h5 class="mb-3">Kết nối</h5>
+                            <div class="d-flex justify-content-center justify-content-md-end">
+                                <a href="#" class="text-white mx-2"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Phần bản quyền -->
-            <div class="footer-bottom text-center py-3" style="border-top: 1px solid rgba(255, 255, 255, 0.1);">
-                <p class="mb-0 small">
-                    &copy; 2024 <a href="#" class="text-white text-decoration-none">YourBrand</a>. Tất cả quyền
-                    được bảo lưu.
-                </p>
-            </div>
-        </footer>
-        </div>
-        <!--Footer bottom end-->
+                <!-- Phần bản quyền -->
+                <div class="footer-bottom text-center py-3" style="border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                    <p class="mb-0 small">
+                        &copy; 2024 <a href="#" class="text-white text-decoration-none">YourBrand</a>. Tất cả quyền
+                        được bảo lưu.
+                    </p>
+                </div>
+            </footer>
+    </div>
+    <!--Footer bottom end-->
     </footer>
     </div>
 

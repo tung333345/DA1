@@ -36,7 +36,7 @@ class SanPhamController{
             $trang_thai = $_POST['trang_thai'];
             $mo_ta = $_POST['mo_ta'];
             $hinh_anh = $_FILES['hinh_anh'];
-            $file_thumb = uploadFile($hinh_anh,'./uploads/');
+            $file_thumb = uploadFile($hinh_anh,'../uploads/');
             // mảng hình ảnh 
             $img_array = $_FILES['img_array'];
 
@@ -79,7 +79,7 @@ class SanPhamController{
                     'error'=> $img_array['error'][$key],
                     'size'=> $img_array['size'][$key]                
                 ];
-                $link_hinh_anh = uploadFile($file,'./upload/');
+                $link_hinh_anh = uploadFile($file,'../upload/');
 
                 $this->modelSanPham->insertAlbumAnhSanPham($san_pham_id,$link_hinh_anh);
             }
@@ -118,7 +118,7 @@ class SanPhamController{
             // Xử lý cập nhật hình ảnh
             $hinh_anh = $_FILES['hinh_anh'];
             if ($hinh_anh['error'] == 0) {
-                $file_thumb = uploadFile($hinh_anh, './uploads/');
+                $file_thumb = uploadFile($hinh_anh, '../uploads/');
                 if ($file_thumb) {
                     deleteFile($_POST['current_hinh_anh']);
                 }
@@ -127,6 +127,7 @@ class SanPhamController{
             }
 
             $this->modelSanPham->updateSanPham($san_pham_id, $ten_san_pham, $gia_san_pham, $gia_khuyen_mai, $so_luong, $id_danh_muc, $trang_thai, $mo_ta, $file_thumb);
+           
 
             header("location:?act=san-pham");
             exit();
